@@ -40,7 +40,8 @@ Boston, MA 02111-1307, USA.  */
 #include <string.h>
 #include <stdio.h>
 
-
+//this should go in configuration generation
+#define HAVE_STDLIB_H
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
 #else

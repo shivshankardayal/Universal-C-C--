@@ -15,8 +15,9 @@
    macro. */
 #define sys_errlist sys_errlist__
 #endif
-
-#include <stdio.h>
+//we cannot have stdio.h as it will lead to redefinition of sys_nerr and
+//sys_errlist in bits/sys_errlist.h
+//#include <stdio.h>
 #include <errno.h>
 
 #ifndef NEED_sys_errlist
