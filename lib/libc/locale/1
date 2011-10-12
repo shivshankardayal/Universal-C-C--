@@ -1,0 +1,8 @@
+_def_messages.o \
+_def_monetary.o \
+_def_numeric.o \
+_def_time.o \
+ctypeio.o \
+localeconv.o \
+nl_langinfo.o \
+setlocale.o \

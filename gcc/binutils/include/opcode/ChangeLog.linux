@@ -1,0 +1,47 @@
+Wed Feb 24 13:18:50 1999  H.J. Lu  (hjl@gnu.org)
+
+	* i386.h (i386_optab): Add "RegRegmem" to "cvtss2si" and
+	"cvttss2si".
+
+Tue Feb 23 00:32:22 1999  Doug Ledford <dledford@redhat.com>
+
+	* i386.h (i386_optab, i386_regtab): Add support for P/III.
+
+Tue Jan 12 11:30:01 1999  Maciej W. Rozycki <macro@ds2.pg.gda.pl>
+
+	* i386.h (i386_optab): Treat "iret" like "lret". Add the
+	single-argument versions of aad and aam instructions. Add
+	"sysenter", "sysexit", "fxsave" and "fxrstor".
+
+Wed Sep  9 00:49:56 1998  Robert Dale <rob@nb.net>
+
+	* i386.h: Added AMD 3DNow! instructions.
+
+Tue May 26 21:34:40 1998  H.J. Lu  <hjl@gnu.org>
+
+	* i386.h (i386_optab): Remove "retw", "lretw", "enterw" and
+	"leavew". Remove Data32 from "ret", "lret", "enter" and "leave".
+	Add WordOperand to "ret", "lret", "enter" and "leave".
+
+Fri Apr 24 19:28:19 1998  H.J. Lu  <hjl@gnu.org>
+
+	* i386.h (i386_optab): Add WordReg and WordMem for "call",
+	"lcall", "jmp" and "ljmp". Add Imm16 for "lcall" and "ljmp".
+	(PUSH_IMM): New.
+	
+Tue Apr 21 13:03:17 1998  Martynas Kunigelis  <kunimart@pit.ktu.lt>
+
+	* i386.h (i386_optab): Add "addr32", "adword", "data32" and 
+	"dword" entries in the opcode prefix section. Add 'Prefix' 
+	to the opcode modifier for all opcode prefix entries. Remove
+	the "callw" and "lcallw" entries. Change the opcode modifiers 
+	for "jmp", "call", "ljmp" and "lcall".
+	
+	* i386.h (i386_prefixtab): Add "addr32" and "data32" entries.
+	
+Sat Apr 11 18:51:35 1998  H.J. Lu  <hjl@gnu.org>
+
+	* i386.h (i386_optab): Add "xlatb", "fnsaves", "fsaves" and
+	"frstors".  Use ByteOperand, WordOperand and DWordOperand to
+	indicate if an instruction can have an operand size suffix.
+	Use Reg16, Reg32, WordReg and WordMem when appropriate.

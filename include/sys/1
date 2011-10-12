@@ -1,0 +1,27 @@
+acct.h:typedef u_int16_t comp_t;
+acct.h:	u_int16_t ac_mem;	/* average memory usage */
+core.h:	u_int16_t c_hdrsize;		/* Size of this header (machdep algn) */
+core.h:	u_int16_t c_seghdrsize;		/* Size of a segment header */
+disklabel.h:	u_int16_t d_type;		/* drive type */
+disklabel.h:	u_int16_t d_subtype;		/* controller/d_type specific */
+disklabel.h:	u_int16_t d_sparespertrack;	/* # of spare sectors per track */
+disklabel.h:	u_int16_t d_sparespercyl;	/* # of spare sectors per cylinder */
+disklabel.h:	u_int16_t d_rpm;		/* rotational speed */
+disklabel.h:	u_int16_t d_interleave;		/* hardware sector interleave */
+disklabel.h:	u_int16_t d_trackskew;		/* sector 0 skew, per track */
+disklabel.h:	u_int16_t d_cylskew;		/* sector 0 skew, per cylinder */
+disklabel.h:	u_int16_t d_checksum;		/* xor of data incl. partitions */
+disklabel.h:	u_int16_t d_npartitions;	/* number of partitions in following */
+disklabel.h:			u_int16_t cpg;	/* UFS: FS cylinders per group */
+disklabel.h:			u_int16_t sgs;	/* LFS: FS segment shift */
+dkbad.h:	u_int16_t bt_mbz;		/* unused; should be 0 */
+dkbad.h:	u_int16_t bt_flag;		/* -1 => alignment cartridge */
+dkbad.h:		u_int16_t bt_cyl;	/* cylinder number of bad sector */
+dkbad.h:		u_int16_t bt_trksec;	/* track and sector number */
+exec_elf.h:typedef u_int16_t Elf32_Half;
+exec_elf.h:typedef u_int16_t Elf64_Quarter;
+inttypes.h:typedef	u_int16_t		uint16_t;
+kcore.h:	u_int16_t	c_hdrsize;	/* Aligned header size		*/
+kcore.h:	u_int16_t	c_seghdrsize;	/* Aligned seg-header size	*/
+midiio.h:	u_int16_t	key;	/* Use SYSEX_PATCH or MAUI_PATCH here */
+midiio.h:	u_int16_t key;	/* FM_PATCH or OPL3_PATCH */

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+./configure --target=icvm-elf --prefix=/usr/local/internetc --program-prefix=i

@@ -1,0 +1,70 @@
+Sun Mar 28 11:48:17 1999  H.J. Lu  (hjl@gnu.org)
+
+	* i386-dis.c (INSN_FWAIT): New, defined.
+	(fetch_data): Return 0 if fwait is the last instruction.
+	(ckprefix): Do while if prefixes != INSN_FWAIT.
+	(print_insn_x86): Print fwait if prefixes == INSN_FWAIT.
+	(putop): Print fwait if necessary.
+
+Sun Mar 28 11:48:17 1999  H.J. Lu  (hjl@gnu.org)
+
+	* i386-dis.c (print_insn_x86): Set bytes_per_line to 7.
+
+Sat Mar 27 20:53:07 1999  Linas Vepstas (linas@linas.org)
+
+	* i370-opc.c: Correct support for the supervisor (aka
+	privledged, aka kernel) instructions.
+
+Thu Feb 25 13:12:41 1999  H.J. Lu  (hjl@gnu.org)
+
+	* i386-dis.c (twobyte_has_modrm): Fix "movlps" (0x13).
+
+Wed Feb 24 08:12:14 1999  H.J. Lu  (hjl@gnu.org)
+
+	* aclocal.m4: Updated from the gas snasphot 1999-02-23.
+	* configure.in: Likewise.
+
+	* Makefile.in: Regenerated.
+	* configure: Likewise.
+
+Tue Feb 23 01:57:53 1999  Linas Vepstas (linas@linas.org)
+
+	* i370-dis.c, i370-opc.c: New.
+
+	* disassemble.c (ARCH_i370): Defined.
+	(disassembler): Handle it.
+
+	* Makefile.am: Add support for Linux/IBM 370.
+
+	* Makefile.in: Regenerated.
+
+Tue Feb 23 00:32:22 1999  Doug Ledford <dledford@redhat.com>
+
+	* i386-dis.c: Add support for P/III.
+
+Tue Feb 16 07:09:52 1999  Maciej W. Rozycki <macro@ds2.pg.gda.pl>
+
+	* i386-dis.c: Another 16bit code fix.
+
+Tue Jan 12 11:30:01 1999  Maciej W. Rozycki <macro@ds2.pg.gda.pl>
+
+	* i386-dis.c: Add Pentium II "sysenter", "sysexit", "fxsave"
+	and "fxrstor" instructions support.
+
+Tue Dec  1 19:24:37 1998  H.J. Lu  (hjl@gnu.org)
+
+	From Jack Howarth <howarth@bromo.med.uc.edu>:
+
+	* sparc-opc.c: Space change.
+
+Fri Oct  2 08:03:07 1998  "Jeff B Epler" <jepler@usgs.gov>
+
+	* i386-dis.c: Add AMD 3DNow! support.
+
+Mon Jun 29 08:09:02 1998  H.J. Lu  (hjl@gnu.org)
+
+	* Makefile.in: Regenerated with automake 1.3.
+
+Sun Apr 12 11:34:16 1998  H.J. Lu  <hjl@gnu.org>
+
+	* i386-dis.c (dis386): Change 0x60 to "pushaS", 0x61 to "popaS".

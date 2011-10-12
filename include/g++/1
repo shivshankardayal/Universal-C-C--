@@ -1,0 +1,29 @@
+pthread_alloc:  static char *_S_start_free;
+pthread_alloc:    __bytes_left = _S_end_free - _S_start_free;
+pthread_alloc:        __result = _S_start_free;
+pthread_alloc:        _S_start_free += __total_bytes;
+pthread_alloc:        __result = _S_start_free;
+pthread_alloc:        _S_start_free += __total_bytes;
+pthread_alloc:            ((__obj *)_S_start_free) -> __free_list_link = *__my_free_list;
+pthread_alloc:            *__my_free_list = (__obj *)_S_start_free;
+pthread_alloc:            _S_start_free = (char *)memalign(__cache_line_size, __bytes_to_get); 
+pthread_alloc:            if (0 == _S_start_free) {
+pthread_alloc:              _S_start_free = (char *)malloc_alloc::allocate(__bytes_to_get);
+pthread_alloc:          _S_start_free = (char *)malloc_alloc::allocate(__bytes_to_get);
+pthread_alloc:        _S_end_free = _S_start_free + __bytes_to_get;
+pthread_alloc:::_S_start_free = 0;
+stl_alloc.h:  static char* _S_start_free;
+stl_alloc.h:    size_t __bytes_left = _S_end_free - _S_start_free;
+stl_alloc.h:        __result = _S_start_free;
+stl_alloc.h:        _S_start_free += __total_bytes;
+stl_alloc.h:        __result = _S_start_free;
+stl_alloc.h:        _S_start_free += __total_bytes;
+stl_alloc.h:            ((_Obj*)_S_start_free) -> _M_free_list_link = *__my_free_list;
+stl_alloc.h:            *__my_free_list = (_Obj*)_S_start_free;
+stl_alloc.h:        _S_start_free = (char*)malloc(__bytes_to_get);
+stl_alloc.h:        if (0 == _S_start_free) {
+stl_alloc.h:                    _S_start_free = (char*)__p;
+stl_alloc.h:                    _S_end_free = _S_start_free + __i;
+stl_alloc.h:            _S_start_free = (char*)malloc_alloc::allocate(__bytes_to_get);
+stl_alloc.h:        _S_end_free = _S_start_free + __bytes_to_get;
+stl_alloc.h:char* __default_alloc_template<__threads, __inst>::_S_start_free = 0;

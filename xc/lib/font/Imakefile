@@ -1,0 +1,29 @@
+XCOMM $TOG: Imakefile /main/13 1997/11/11 14:48:55 msr $
+#include <Server.tmpl>
+
+#define	IHaveSubdirs
+
+#if BuildLowMem
+
+SUBDIRS = bitmap fontfile fc util
+OBJS = bitmap/?*.o fontfile/?*.o fc/?*.o util/?*.o
+DONES = bitmap/DONE fontfile/DONE fc/DONE util/DONE
+
+#else
+
+SUBDIRS = bitmap fontfile fc Speedo Type1 util
+OBJS = bitmap/?*.o fontfile/?*.o fc/?*.o Speedo/?*.o Type1/?*.o util/?*.o
+DONES = bitmap/DONE fontfile/DONE fc/DONE Speedo/DONE Type1/DONE util/DONE
+
+#endif
+
+#undef _LinkBuildLibrary
+#define _LinkBuildLibrary(lib) LinkBuildLibrary(lib)
+
+NormalDepLibraryTarget(font,$(SUBDIRS) $(DONES),$(OBJS))
+
+InstallLinkKitLibrary(font,$(LINKKITDIR)/lib)
+
+ForceSubdirs($(SUBDIRS))
+
+DependSubdirs($(SUBDIRS))

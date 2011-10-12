@@ -1,0 +1,7 @@
+#!/bin/sh
+export ICVMLOCALDIR=/usr/local
+export ICVMDIR=$ICVMLOCALDIR/internetc
+ln -sf ${ICVMDIR}/bin/i* ${ICVMLOCALDIR}/bin
+echo done
+
+

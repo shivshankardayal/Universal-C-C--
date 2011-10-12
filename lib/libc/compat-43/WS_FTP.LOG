@@ -1,0 +1,12 @@
+99.10.05 16:42 B c:\tmp\bsdsrc\bsd-sources\lib\libc\compat-43\creat.2.Z <-- BSD /.vol/8/bsd-sources/lib/libc/compat-43 creat.2.Z
+99.10.05 16:42 B c:\tmp\bsdsrc\bsd-sources\lib\libc\compat-43\creat.c.Z <-- BSD /.vol/8/bsd-sources/lib/libc/compat-43 creat.c.Z
+99.10.05 16:42 B c:\tmp\bsdsrc\bsd-sources\lib\libc\compat-43\getwd.c.Z <-- BSD /.vol/8/bsd-sources/lib/libc/compat-43 getwd.c.Z
+99.10.05 16:42 B c:\tmp\bsdsrc\bsd-sources\lib\libc\compat-43\killpg.2.Z <-- BSD /.vol/8/bsd-sources/lib/libc/compat-43 killpg.2.Z
+99.10.05 16:42 B c:\tmp\bsdsrc\bsd-sources\lib\libc\compat-43\killpg.c.Z <-- BSD /.vol/8/bsd-sources/lib/libc/compat-43 killpg.c.Z
+99.10.05 16:42 B c:\tmp\bsdsrc\bsd-sources\lib\libc\compat-43\Makefile.inc.Z <-- BSD /.vol/8/bsd-sources/lib/libc/compat-43 Makefile.inc.Z
+99.10.05 16:42 B c:\tmp\bsdsrc\bsd-sources\lib\libc\compat-43\setpgrp.c.Z <-- BSD /.vol/8/bsd-sources/lib/libc/compat-43 setpgrp.c.Z
+99.10.05 16:42 B c:\tmp\bsdsrc\bsd-sources\lib\libc\compat-43\sigblock.2.Z <-- BSD /.vol/8/bsd-sources/lib/libc/compat-43 sigblock.2.Z
+99.10.05 16:42 B c:\tmp\bsdsrc\bsd-sources\lib\libc\compat-43\sigcompat.c.Z <-- BSD /.vol/8/bsd-sources/lib/libc/compat-43 sigcompat.c.Z
+99.10.05 16:42 B c:\tmp\bsdsrc\bsd-sources\lib\libc\compat-43\sigpause.2.Z <-- BSD /.vol/8/bsd-sources/lib/libc/compat-43 sigpause.2.Z
+99.10.05 16:42 B c:\tmp\bsdsrc\bsd-sources\lib\libc\compat-43\sigsetmask.2.Z <-- BSD /.vol/8/bsd-sources/lib/libc/compat-43 sigsetmask.2.Z
+99.10.05 16:42 B c:\tmp\bsdsrc\bsd-sources\lib\libc\compat-43\sigvec.2.Z <-- BSD /.vol/8/bsd-sources/lib/libc/compat-43 sigvec.2.Z

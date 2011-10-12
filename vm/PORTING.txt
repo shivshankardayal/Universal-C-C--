@@ -1,0 +1,76 @@
+See cvm.h for options for building your VM. There are several
+possibilities.
+
+
+THIS VM needs to run in 32 bit address space. That is because it uses real pointers.
+If you are running in a 64 bit environment with 64 bit pointers, you will
+need to set options (if available) for running this as a 32-bit application.
+
+
+Alignments, etc. can be adjusted in cvm.h, using the GET/PUT macros.
+Code mem in ICVM is 16 bit aligned, Data mem is 64 bit aligned.
+I have not checked this entirely for GCC conformance, but if you
+need 32bit/64 bit alignment, you wil need to adjust the GET/PUT macros.
+There are separate macros for code and data.
+
+Also, the stack is 64 bit aligned.
+
+
+THIS RELEASE SUPPORTS OPENGL
+
+You will need OPENGL or MESA to compile and link this virtual machine. OpenGL
+1.2 is supported where available. The Windows version can be limited to 1.1,
+due to lack of 1.2 upgrades from MS.
+
+
+
+TO SET UP STRICT ALIGNMENT, SEE THE MAKEFILE and comment in one of these options there:
+
+#comment the ALIGN in if you need strict natural alignment to 32 bits, - 64 bit items
+# can fall on 32 bit boundarys
+#ALIGN=-DICVM_NEEDALIGN32
+
+#comment the ALIGN in if you need strict natural alignment to 64 bits
+# SPARC,MIPS,ALPHA - COMMENT THE ALIGN= IN
+#ALIGN=-DICVM_NEEDALIGN64
+
+We have not been able to test this on a real machine, but it works with our
+diagnostics. Let us know what happens, so we can correct any problems.
+
+
+I HAVE BEEN USING GCC-2.95.2 to compile these files. I do not know what happens
+to register allocations, etc. on older compilers. You should at least update
+to GCC-2.95.2 to get a good compile, if you haven't already.
+
+"icvm" is normally installed in /bin, as the headers used in an icvm  binary will
+invoke icvm as a shell, allowing icvm programs to be run side by side with
+native commands on Unix and Unix-like operating systems. 
+
+So an icvm compiled program may simple be invoked by name, as any normal binary
+or script file would, provided the virtual machine "icvm" is installed in /bin.
+
+You may also use "icvm command <args>", rather than just "command <args>" 
+if you would like, or if "icvm" is NOT in the /bin directory, 
+as icvm command operates just like a shell. 
+
+
+WINDOWS PORTING
+
+This release contains an incomplete port to Windows. Most things work, such as
+file access, OpenGL, standard libs, etc. However, networking and X are not
+implemented yet. This is GPL, and I am not a Windows programmer. If you
+want full support, please feel free to finish it. The general structure is set
+up already.
+
+The VM is command line driven, for now. It is for the open source community
+to tailor this to whatever works best.
+
+Also, this release uses the MINGW compiler to build with. This is to optimize
+access to global registers available in GCC. I have never tried a port with VC.
+Please feel free, any Windows Gurus out there.
+
+Also, you will probably have to compile and link the dev system with CYGWIN.
+
+I have never tried that either. Good luck and let me know what happens.
+
+

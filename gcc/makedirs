@@ -1,0 +1,17 @@
+#!/bin/sh
+export ICVMLOCALDIR=/usr/local
+export ICVMDIR=$ICVMLOCALDIR/internetc
+rm -rf $ICVMDIR
+mkdir $ICVMLOCALDIR
+mkdir $ICVMDIR
+mkdir $ICVMDIR/include
+mkdir $ICVMDIR/lib
+mkdir $ICVMDIR/bin
+mkdir $ICVMDIR/icvm-unknown-elf
+mkdir $ICVMDIR/icvm-unknown-elf/lib
+mkdir $ICVMDIR/icvm-unknown-elf/bin
+mkdir $ICVMDIR/icvm-unknown-elf/include
+mkdir $ICVMDIR/icvm-unknown-elf/lib/ldscripts
+
+
+

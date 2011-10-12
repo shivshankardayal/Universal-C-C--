@@ -1,0 +1,40 @@
+Sun Mar 28 15:32:42 1999  H.J. Lu  (hjl@gnu.org)
+
+	* Makefile.in: Regenerated with automake 1.4.
+
+Tue Aug 25 17:14:38 1998  H.J. Lu  (hjl@gnu.org)
+
+	* aclocal.m4: Updated from the gas snasphot 1999-02-23.
+	* configure.in: Likewise.
+
+	* Makefile.am (gprof.o): Also depend on
+	$(srcdir)/../include/demangle.h.
+
+	* Makefile.in: Regenerated.
+	* configure: Likewise.
+
+	* utils.h: Declare "demangle_lang".
+
+	* utils.c: Include "utils.h".
+	(print_name_only): Call cplus_demangle () with "demangle_lang"
+	instead of "DMGL_ANSI | DMGL_PARAMS".
+
+	* gprof.c: Include "demangle.h"
+	(demangle_lang): New. Initialized to "DMGL_ANSI | DMGL_PARAMS".
+	(OPTION_LANG): New.
+	(long_options): Add an entry for OPTION_LANG.
+	(main): Handle OPTION_LANG.
+	(usage): Add "[--lang=language]".
+
+Tue Aug 25 17:14:38 1998  H.J. Lu  (hjl@gnu.org)
+
+	* gprof/core.c (core_create_line_syms): Don't use fixed
+	size array for prev_name and prev_filename.
+
+Mon Jun 29 08:09:02 1998  H.J. Lu  (hjl@gnu.org)
+
+	* Makefile.in: Regenerated with automake 1.3.
+
+Mon Apr  6 08:05:01 1998  H.J. Lu  (hjl@gnu.org)
+
+	* gprof.c (usage): Call binutils_bug_report ().

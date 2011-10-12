@@ -1,0 +1,19 @@
+THIS DOC NEEDS TO BE REDONE ... THIS IS QUICK AND DIRTY
+
+To build libraries or compiler (lib,xpm,xc,gcc) you will need the library/compiler
+ plus the includes all on the same level. It is recommended that you use
+the entire CVS source tree to build with. So your directory might look like:
+	
+(directory of ivm)
+	lib
+	gcc
+	xc
+	xpm
+	include
+
+This stuff will NOT compile unless the include directory is sitting at 
+the root.
+
+
+
+ 

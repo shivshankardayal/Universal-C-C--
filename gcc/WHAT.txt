@@ -1,0 +1,62 @@
+What Is IVM
+_____________________
+
+
+IVM is a compiler and virtual machine that enables one to write C and
+C++ programs that can be run on any machine that supports the virtual machine.
+
+The speed of the virtual machine is fast enough to run 3D video games in
+real time, without the need for JIT compilation. JIT compilation could help,
+but is not necessary. For this reason, ports should be very quick and cost
+effective. Download our DOOM port and check it out for yourself!
+
+This release of IVM supports  standard C/C++ libraries, most of POSIX 
+(completion in process now), the NetBSD libraries, X Windows and Motif. As 
+a result, many current applications can be compiled and operated with 
+IVM.
+
+We have be provided an OpenGL port, to aid in the development of high-speed
+3D video applications targetted for portable internet use.
+
+We will also be providing a port of Wine and its relatives to aid in porting
+of Windows applications to IVM.
+
+Other platform ports such as Windows, as well as browser ports, 
+new libraries, etc. will follow.
+
+IVM is very portable, allowing quick ports to new hardware. It is
+open-source, allowing easy customization and testing. Because it is standard
+C/C++, there is no need to rewrite code in one of the new languages to make
+your product portable. Hence, it reduces costs of porting existing programs, 
+and does not have a learning curve associated with new products.
+
+Our vision of the future of IVM is to take it to the Internet 
+completely, allowing applications to be loaded and operated
+straight from the Internet, as well as accessing online user resources, 
+such as files. We see the ability to virtualize the computer
+itself, allowing programs and files to be operated from a television or
+cable setbox, thus opening applications and games to previously 
+unpentrated audiences.
+
+We think IVM  will aid many developers to release their new products
+swiftly and in a cost-effective way. They can be reaping the benefits of an
+already released product, while their competition is still struggling with
+learning curves and complete rewrites in new languages that simply 
+are not needed.
+
+With the ability to run portable, high-speed software such as video games,
+developers will also attract larger audiences to their product. Bringing
+standard business and home targetted applications to the Internet will be
+very quick and cost-effective and potentially could enable previously 
+untapped markets. 
+
+We also believe IVM will aid the open-source community in its many
+innovations in establishing new standards and levels of quality on the 
+Internet. They brought Linux and BSD to the world. We are curious to see 
+what they will do with this.
+
+What is IVM?
+
+We believe it is the future of The New Internet...
+
+

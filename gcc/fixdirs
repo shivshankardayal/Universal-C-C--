@@ -1,0 +1,19 @@
+#!/bin/sh
+# reorganize target directory to more reasonable form. delete junk.
+
+export ICVMLOCALDIR=/usr/local
+export ICVMDIR=$ICVMLOCALDIR/internetc
+
+mv $ICVMDIR/icvm-unknown-elf/sys-include/* $ICVMDIR/include
+rmdir $ICVMDIR/icvm-unknown-elf/sys-include
+ln -s  $ICVMDIR/include $ICVMDIR/icvm-unknown-elf/sys-include
+mv $ICVMDIR/icvm-unknown-elf/include/* $ICVMDIR/include
+rmdir $ICVMDIR/icvm-unknown-elf/include
+ln -s  $ICVMDIR/include $ICVMDIR/icvm-unknown-elf/include
+
+rm $ICVMDIR/icvm-unknown-elf/lib/*.a
+rm $ICVMDIR/icvm-unknown-elf/lib/*.la
+mv $ICVMDIR/icvm-unknown-elf/lib/* $ICVMDIR/lib
+rmdir $ICVMDIR/icvm-unknown-elf/lib
+ln -s  $ICVMDIR/lib $ICVMDIR/icvm-unknown-elf/lib
+

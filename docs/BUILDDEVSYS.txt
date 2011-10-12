@@ -1,0 +1,89 @@
+Compilation and installation of Internet C++ Development System.
+
+You must be SU to install these various components. 
+You must install in the order listed.
+
+Also, /usr/local/bin MUST be in your PATH variable.
+
+
+
+IMPORTANT: MAKE SURE /usr/local/bin IS IN YOUR PATH VARIABLE BEFORE YOU ATTEMPT
+THIS BUILD
+
+
+####################################################
+INSTALLATION of the Internet C++ development system:
+####################################################
+
+You must have a directory set up with the following directories set up:
+
+	gcc
+	include
+	lib
+	xc
+	xpm
+
+To build and install igcc:
+
+	cd gcc
+	make
+
+igcc will be installed in several directories at /usr/local/internetc.
+links to the binaries are set in /usr/local/bin, so to use igcc, etc.
+you will need /usr/local/bin in your PATH variable.
+
+To build libraries:
+
+	cd lib
+	make
+	make install
+
+the libraries will be installed at /usr/local/internetc/lib
+
+
+To build the X libraries:
+
+	cd xc
+	make
+	make install
+
+
+To build the XPM libraries:
+
+	cd xc
+	make
+	make install
+
+
+
+
+After building and installing the gcc, libraries, and the virtual machine
+(icvm) is installed in /bin, you may compile and run
+Internet C++ programs. Internet C++ uses a shell header at the beginning of it's executables,
+so it is only necessary to type the name of the command to run it.
+
+
+For instance, to compile a program called testit:
+
+	igcc -O2 testit.c -o testit
+
+to run the program:
+	
+	./testit
+
+To compile a program using the stdc++ libraries use:
+
+	ig++ -O2 program.cc -o program
+
+It is not necessary to compile C++ programs using ig++ if you are not using
+IO streams or other standard C++ features. Most C++ programs will compile
+and run just fine using igcc.
+
+Also note that the X11 libraries are installed. These will be a standard
+part of Internet c++. 
+
+
+
+
+
+	

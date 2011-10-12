@@ -1,0 +1,187 @@
+__res_close.c:/*	$NetBSD: __res_close.c,v 1.4 1997/11/04 23:52:38 thorpej Exp $	*/
+__res_close.c:__indr_reference(__res_close,_res_close)
+__res_close.c:#undef _res_close
+__res_close.c:void	_res_close __P((void));
+__res_close.c:_res_close()
+__res_close.c:	__res_close();
+__res_send.c:/*	$NetBSD: __res_send.c,v 1.4 1997/11/04 23:52:41 thorpej Exp $	*/
+__res_send.c:__indr_reference(__res_send,res_send)
+__res_send.c:	return __res_send(buf, buflen, ans, anssiz);
+gethnamaddr.c:			if (_res.options & RES_USE_INET6) {
+gethnamaddr.c:		if (_res.nsort && haveanswer > 1 && qtype == T_A)
+gethnamaddr.c:		if (_res.options & RES_USE_INET6)
+gethnamaddr.c:	if ((_res.options & RES_INIT) == 0 && res_init() == -1) {
+gethnamaddr.c:	if (_res.options & RES_USE_INET6) {
+gethnamaddr.c:				if (_res.options & RES_USE_INET6)
+gethnamaddr.c:		if (_res.options & RES_USE_INET6) {
+gethnamaddr.c:	if (_res.options & RES_USE_INET6)
+gethnamaddr.c:	    for (j = 0 ; (unsigned)j < _res.nsort; j++)
+gethnamaddr.c:		if (_res.sort_list[j].addr.s_addr == 
+gethnamaddr.c:		    _res.sort_list[j].mask))
+gethnamaddr.c:	if (af == AF_INET && (_res.options & RES_USE_INET6)) {
+getnetnamadr.c:		if (_res.options & RES_DEBUG)
+getnetnamadr.c:	if ((_res.options & RES_INIT) == 0 && res_init() == -1) {
+getnetnamadr.c:		if (_res.options & RES_DEBUG)
+getnetnamadr.c:	if ((_res.options & RES_INIT) == 0 && res_init() == -1) {
+hesiod.c: * it uses res_send() and accesses _res.
+hesiod.c:__weak_alias(hesiod_resolve,_hesiod_resolve);
+hesiod.c:__weak_alias(hes_resolve,_hes_resolve);
+hesiod.c:			rhs_list = hesiod_resolve(context, p, "rhs-extension");
+hesiod.c: * hesiod_resolve --
+hesiod.c:hesiod_resolve(context, name, type)
+hesiod.c:	if ((_res.options & RES_INIT) == 0 && res_init() == -1)
+hesiod.c:hes_resolve(name, type)
+hesiod.c:	list = hesiod_resolve(context, name, type);
+res_data.c:const char *const _res_opcodes[] = {
+res_data.c:const char *const _res_resultcodes[] = {
+res_debug.c:extern const char *const _res_opcodes[];
+res_debug.c:extern const char *const _res_resultcodes[];
+res_debug.c:void __fp_resstat __P((struct __res_state *, FILE *));
+res_debug.c:	sflag = (int)(_res.pfcode & pflag);
+res_debug.c:		if ((!_res.pfcode) || ((sflag) && (_res.pfcode & RES_PRF_HEAD1)))
+res_debug.c:			if ((!_res.pfcode) || sflag) {
+res_debug.c:		if ((!_res.pfcode) || ((sflag) && (_res.pfcode & RES_PRF_HEAD1)))
+res_debug.c:__fp_resstat(statp, file)
+res_debug.c:	struct __res_state *statp;
+res_debug.c:		statp = &_res;
+res_debug.c:	if ((_res.options & RES_INIT) == 0 && res_init() == -1)
+res_debug.c:	if ((!_res.pfcode) || (_res.pfcode & RES_PRF_HEADX) || hp->rcode) {
+res_debug.c:			_res_opcodes[hp->opcode],
+res_debug.c:			_res_resultcodes[hp->rcode],
+res_debug.c:	if ((!_res.pfcode) || (_res.pfcode & RES_PRF_HEADX))
+res_debug.c:	if ((!_res.pfcode) || (_res.pfcode & RES_PRF_HEAD2)) {
+res_debug.c:	if ((!_res.pfcode) || (_res.pfcode & RES_PRF_HEAD1)) {
+res_debug.c:	if ((!_res.pfcode) || (_res.pfcode & 
+res_debug.c:		if ((!_res.pfcode) || (_res.pfcode & RES_PRF_QUES))
+res_debug.c:			if ((!_res.pfcode) || (_res.pfcode & RES_PRF_QUES))
+res_debug.c:			if ((!_res.pfcode) || (_res.pfcode & RES_PRF_QUES))
+res_debug.c:			if ((!_res.pfcode) || (_res.pfcode & RES_PRF_QUES))
+res_debug.c:			if ((!_res.pfcode) || (_res.pfcode & RES_PRF_QUES))
+res_debug.c:			if ((!_res.pfcode) || (_res.pfcode & RES_PRF_QUES))
+res_debug.c:	if ((_res.options & RES_INIT) == 0 && res_init() == -1) {
+res_debug.c:	if ((!_res.pfcode) || (_res.pfcode & RES_PRF_TTLID))
+res_debug.c:	if ((!_res.pfcode) || (_res.pfcode & RES_PRF_CLASS))
+res_init.c:__weak_alias(res_init,_res_init);
+res_init.c:struct __res_state _res = {
+res_init.c:	_res.id = res_randomid();
+res_init.c:	_res.nsaddr.sin_len = sizeof(struct sockaddr_in);
+res_init.c:	_res.nsaddr.sin_family = AF_INET;
+res_init.c:	_res.nsaddr.sin_port = htons(NAMESERVER_PORT);
+res_init.c:	_res.nsaddr.sin_addr = inet_makeaddr(IN_LOOPBACKNET, 1);
+res_init.c:	_res.nsaddr.sin_addr.s_addr = INADDR_ANY;
+res_init.c:	_res.nscount = 1;
+res_init.c:	_res.ndots = 1;
+res_init.c:	_res.pfcode = 0;
+res_init.c:		(void)strncpy(_res.defdname, cp, sizeof(_res.defdname) - 1);
+res_init.c:		if ((cp = strpbrk(_res.defdname, " \t\n")) != NULL)
+res_init.c:		cp = _res.defdname;
+res_init.c:		pp = _res.dnsrch;
+res_init.c:		for (n = 0; *cp && pp < _res.dnsrch + MAXDNSRCH; cp++) {
+res_init.c:		    (void)strncpy(_res.defdname, cp,
+res_init.c:				  sizeof(_res.defdname) - 1);
+res_init.c:		    if ((cp = strpbrk(_res.defdname, " \t\n")) != NULL)
+res_init.c:		    (void)strncpy(_res.defdname, cp,
+res_init.c:				  sizeof(_res.defdname) - 1);
+res_init.c:		    if ((cp = strchr(_res.defdname, '\n')) != NULL)
+res_init.c:		    cp = _res.defdname;
+res_init.c:		    pp = _res.dnsrch;
+res_init.c:		    for (n = 0; *cp && pp < _res.dnsrch + MAXDNSRCH; cp++) {
+res_init.c:			_res.nsaddr_list[nserv].sin_len = sizeof(struct sockaddr_in);
+res_init.c:			_res.nsaddr_list[nserv].sin_family = AF_INET;
+res_init.c:			_res.nsaddr_list[nserv].sin_port =
+res_init.c:			_res.nsaddr_list[nserv].sin_addr = a;
+res_init.c:			    _res.sort_list[nsort].addr = a;
+res_init.c:				    _res.sort_list[nsort].mask = a.s_addr;
+res_init.c:				    _res.sort_list[nsort].mask = 
+res_init.c:					net_mask(_res.sort_list[nsort].addr);
+res_init.c:				_res.sort_list[nsort].mask = 
+res_init.c:				    net_mask(_res.sort_list[nsort].addr);
+res_init.c:		_res.nscount = nserv;
+res_init.c:	    _res.nsort = nsort;
+res_init.c:	if (_res.defdname[0] == 0) {
+res_init.c:		rv = gethostname(buf, sizeof(_res.defdname));
+res_init.c:		_res.defdname[sizeof(_res.defdname) - 1] = '\0';
+res_init.c:			(void)strncpy(_res.defdname, cp + 1, sizeof(_res.defdname) - 1);
+res_init.c:		pp = _res.dnsrch;
+res_init.c:		*pp++ = _res.defdname;
+res_init.c:		for (cp = _res.defdname, n = 0; *cp; cp++)
+res_init.c:		cp = _res.defdname;
+res_init.c:		while (pp < _res.dnsrch + MAXDFLSRCH) {
+res_init.c:		if (_res.options & RES_DEBUG) {
+res_init.c:			for (pp = _res.dnsrch; *pp; pp++)
+res_init.c:	_res.options |= RES_INIT;
+res_init.c:	if (_res.options & RES_DEBUG)
+res_init.c:				_res.ndots = i;
+res_init.c:				_res.ndots = RES_MAXNDOTS;
+res_init.c:			if (_res.options & RES_DEBUG)
+res_init.c:				printf(";;\tndots=%d\n", _res.ndots);
+res_init.c:			if (!(_res.options & RES_DEBUG)) {
+res_init.c:				_res.options |= RES_DEBUG;
+res_init.c:			_res.options |= RES_USE_INET6;
+res_mkquery.c:__weak_alias(res_mkquery,_res_mkquery);
+res_mkquery.c:	if ((_res.options & RES_INIT) == 0 && res_init() == -1) {
+res_mkquery.c:	if (_res.options & RES_DEBUG)
+res_mkquery.c:	hp->id = htons(++_res.id);
+res_mkquery.c:	hp->rd = (_res.options & RES_RECURSE) != 0;
+res_query.c:__weak_alias(res_query,_res_query);
+res_query.c:__weak_alias(res_search,_res_search);
+res_query.c:	if ((_res.options & RES_INIT) == 0 && res_init() == -1) {
+res_query.c:	if (_res.options & RES_DEBUG)
+res_query.c:		if (_res.options & RES_DEBUG)
+res_query.c:		if (_res.options & RES_DEBUG)
+res_query.c:		if (_res.options & RES_DEBUG)
+res_query.c:	if ((_res.options & RES_INIT) == 0 && res_init() == -1) {
+res_query.c:	if (dots >= _res.ndots) {
+res_query.c:	if ((!dots && (_res.options & RES_DEFNAMES)) ||
+res_query.c:	    (dots && !trailing_dot && (_res.options & RES_DNSRCH))) {
+res_query.c:		for (domain = (const char * const *)_res.dnsrch;
+res_query.c:			if (!(_res.options & RES_DNSRCH))
+res_query.c:	if ((_res.options & RES_INIT) == 0 && res_init() == -1) {
+res_query.c:	if (_res.options & RES_DEBUG)
+res_query.c:	if (_res.options & RES_NOALIASES)
+res_send.c:	if (_res.options & RES_DEBUG) {
+res_send.c:	if (_res.options & RES_DEBUG) {
+res_send.c: *	looks up "ina" in _res.ns_addr_list[]
+res_send.c:	for (ns = 0;  ns < _res.nscount;  ns++) {
+res_send.c:		register const struct sockaddr_in *srv = &_res.nsaddr_list[ns];
+res_send.c:	if ((_res.options & RES_INIT) == 0 && res_init() == -1) {
+res_send.c:	DprintQ((_res.options & RES_DEBUG) || (_res.pfcode & RES_PRF_QUERY),
+res_send.c:	v_circuit = (_res.options & RES_USEVC) || buflen > PACKETSZ;
+res_send.c:	for (try = 0; try < _res.retry; try++) {
+res_send.c:	    for (ns = 0; ns < _res.nscount; ns++) {
+res_send.c:		struct sockaddr_in *nsap = &_res.nsaddr_list[ns];
+res_send.c:		Dprint(_res.options & RES_DEBUG,
+res_send.c:			try = _res.retry;
+res_send.c:				Dprint(_res.options & RES_DEBUG,
+res_send.c:				DprintQ((_res.options & RES_DEBUG) ||
+res_send.c:					(_res.pfcode & RES_PRF_REPLY),
+res_send.c:			if (_res.nscount == 1 || (try == 0 && ns == 0)) {
+res_send.c:					Dprint(_res.options & RES_DEBUG,
+res_send.c:			seconds = (_res.retrans << try);
+res_send.c:				seconds /= _res.nscount;
+res_send.c:				Dprint(_res.options & RES_DEBUG,
+res_send.c:				DprintQ((_res.options & RES_DEBUG) ||
+res_send.c:					(_res.pfcode & RES_PRF_REPLY),
+res_send.c:			if (!(_res.options & RES_INSECURE1) &&
+res_send.c:				DprintQ((_res.options & RES_DEBUG) ||
+res_send.c:					(_res.pfcode & RES_PRF_REPLY),
+res_send.c:			if (!(_res.options & RES_INSECURE2) &&
+res_send.c:				DprintQ((_res.options & RES_DEBUG) ||
+res_send.c:					(_res.pfcode & RES_PRF_REPLY),
+res_send.c:				DprintQ(_res.options & RES_DEBUG,
+res_send.c:				if (!_res.pfcode)
+res_send.c:			if (!(_res.options & RES_IGNTC) && anhp->tc) {
+res_send.c:				Dprint(_res.options & RES_DEBUG,
+res_send.c:		Dprint((_res.options & RES_DEBUG) ||
+res_send.c:		       ((_res.pfcode & RES_PRF_REPLY) &&
+res_send.c:			(_res.pfcode & RES_PRF_HEAD1)),
+res_send.c:		DprintQ((_res.options & RES_DEBUG) ||
+res_send.c:			(_res.pfcode & RES_PRF_REPLY),
+res_send.c:		if ((v_circuit && (!(_res.options & RES_USEVC) || ns != 0)) ||
+res_send.c:		    !(_res.options & RES_STAYOPEN)) {
+res_send.c:_res_close()
+res_send.c:	return (__res_send(buf, buflen, ans, anssiz));
+sethostent.c:void	_res_close __P((void));
+sethostent.c:	if ((_res.options & RES_INIT) == 0 && res_init() == -1)
+sethostent.c:		_res.options |= RES_STAYOPEN | RES_USEVC;
+sethostent.c:	_res.options &= ~(RES_STAYOPEN | RES_USEVC);

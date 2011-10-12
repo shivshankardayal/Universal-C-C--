@@ -1,0 +1,92 @@
+Tue Mar 30 08:34:28 1999  H.J. Lu  (hjl@gnu.org)
+
+	* objdump.c (disassemble_bytes): Make `buf' empty first and
+	print any error message for error return.
+
+Sun Mar 28 15:32:42 1999  H.J. Lu  (hjl@gnu.org)
+
+	* Makefile.in: Regenerated with automake 1.4.
+
+Thu Feb 25 15:32:08 1999  "H. Peter Anvin" <hpa@transmeta.com>
+
+	* objcopy.c (section_list): Add "extract".
+	(sections_extracted): New variable.
+	(copy_options): Add 'j'.
+	(copy_usage): Add '-j section'.
+	(find_section_list): Handle "extract" and "sections_extracted".
+	(is_strip_section): Likewise.
+	(copy_object): Liekwise.
+	(setup_section): Likewise.
+	(copy_section): Likewise.
+	(copy_main): Likewise.
+
+Wed Feb 24 08:12:14 1999  H.J. Lu  (hjl@gnu.org)
+
+	* aclocal.m4: Updated from the gas snasphot 1999-02-23.
+	* configure.in: Likewise.
+
+	* Makefile.in: Regenerated.
+	* configure: Likewise.
+
+Tue Feb 16 11:21:18 1999  H.J. Lu  (hjl@gnu.org)
+
+	* addr2line.c (demangle_lang): New. Initialized to
+	"DMGL_ANSI | DMGL_PARAMS".
+	(OPTION_LANG): New.
+	(long_options): Add an entry for OPTION_LANG.
+	(usage): Add "[--lang=language]".
+	(translate_addresses): Call cplus_demangle () with "demangle_lang"
+	instead of "DMGL_ANSI | DMGL_PARAMS".
+	(main): Handle OPTION_LANG.
+	* nm.c: Likewise.
+	* objdump.c: Likewise.
+
+Thu Dec 17 06:44:44 1998  Matthew Benjamin <MBenjamin@comshare.com>
+
+	* objcopy.c (lookup_sym_redefinition): New.
+	(redefine_list_append): New.
+	(redefine_sym_list): New.
+	(OPTION_REDEFINE_SYM): New.
+	(copy_options): Add the new option --redefine-sym=old_form=new_form.
+	(copy_usage): Likewise.
+	(filter_symbols): Rename a symbol if necessary.
+	(copy_object): Call filter_symbols if redefine_sym_list is not
+	NULL.
+	(copy_main): Check OPTION_REDEFINE_SYM.
+
+1998-10-27  Philip Blundell  <pb@nexus.co.uk>
+
+	* objdump.c (disassemble_bytes): Make address variables unsigned
+	to avoid problems when disassembling code at high-bit-set
+	addresses.
+
+Thu Oct  1 08:02:54 1998  H.J. Lu  (hjl@gnu.org)
+
+	* Makefile.am (GENERATED_HFILES): Add rcparse.h.
+	(arparse.h, defparse.h, nlmheader.h, rcparse.h, sysinfo.h): Add
+	dependencies for parallel make.
+
+	* Makefile.in: Regenerated.
+
+Wed Jul 22 08:01:26 1998  Maciej W. Rozycki <macro@ds2.pg.gda.pl>
+
+	* Makefile.am (install): Remove file only if we will install
+	it.
+
+	* Makefile.in: Regenerated.
+
+Mon Jun 29 08:09:02 1998  H.J. Lu  (hjl@gnu.org)
+
+	* Makefile.in: Regenerated with automake 1.3.
+
+Mon Apr  6 08:05:01 1998  H.J. Lu  (hjl@gnu.org)
+
+	* addr2line.c (usage): Call binutils_bug_report ().
+	* ar.c (usage): Likewise.
+	* nlmconv.c (show_usage): Likewise.
+	* nm.c (usage): Likewise.
+	* objcopy.c (copy_usage, strip_usage): Likewise.
+	* objdump.c (usage): Likewise.
+	* size.c (usage): Likewise.
+	* strings.c (usage): Likewise.
+	* windres.c (usage): Likewise.

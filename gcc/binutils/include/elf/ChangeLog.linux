@@ -1,0 +1,34 @@
+Tue Feb 23 01:57:53 1999  Linas Vepstas (linas@linas.org)
+
+	* i370.h: New.
+
+	* common.h (EM_I370): New. Defined as 0xf00f.
+
+Tue Dec  1 19:28:56 1998  H.J. Lu  (hjl@gnu.org)
+
+	From Jack Howarth <howarth@bromo.med.uc.edu>:
+
+	* common.h (EM_SPARC64): Renamed as EM_OLD_SPARCV9.
+	(EM_SPARCV9): New.
+
+1998-10-27  Philip Blundell  <pb@nexus.co.uk>
+
+	* arm.h: Synchronise definitions with current Cygnus version.
+	Add EF_ALIGN8.
+
+Sat Oct  3 18:50:40 1998  Philip Blundell  <philb@gnu.org>
+
+	* arm.h: New file.
+
+1998-10-02  Philip Blundell  <pb@nexus.co.uk>
+
+	From Jim Pick <jim@jimpick.com>:
+	* external.h (Elf_External_Versym_sizeof): New definition.
+
+Wed Jun  3 20:09:29 1998  Philip Blundell  <Philip.Blundell@pobox.com>
+
+	* common.h (EM_ARM): Use the officially allocated value of 40.
+
+Fri Dec 26 00:37:47 1997  Philip Blundell  <Philip.Blundell@pobox.com>
+
+	* common.h (EM_ARM): Added.

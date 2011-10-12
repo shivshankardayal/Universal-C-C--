@@ -1,0 +1,33 @@
+
+a.out:     file format elf32-icvm
+
+Disassembly of section .text:
+
+00000000 <__fixdfdi>:
+   0:	9efb 0000      	frame #0x0
+   4:	f8fa 0c00      	moved (12,%fp),%fp0
+   8:	d1f9 2bf6 ff3f 	movef #0r1.9997,%fp1
+   e:	20fb 0000 0000 	moveq #0x8000000000000000,%q0
+  14:	0000 0080 
+  18:	20fb ffff ffff 	moveq #0x7fffffffffffffff,%q0
+  1e:	ffff ff7f 
+  22:	840b 0000 0000 	cbged #0r0,%fp0,4c <__fixdfdi+0x4c>
+  28:	0000 0000 2a00 
+  2e:	0000 
+  30:	99fb           	rtsframe
+  32:	380c 0000 0000 	cbgtd #0r9.22337e+18,%fp0,40 <__fixdfdi+0x40>
+  38:	0000 e043 0e00 
+  3e:	0000 
+  40:	d800           	negd %fp0,-(%sp)
+  42:	a0fb 0000 0000 	bsr 42 <__fixdfdi+0x42>
+  48:	be01           	negq %q0
+  4a:	99fb           	rtsframe
+  4c:	840b 0000 0000 	cbged #0r9.22337e+18,%fp0,64 <__fixdfdi+0x64>
+  52:	0000 e043 1800 
+  58:	0000 
+  5a:	b4fa           	moved %fp0,-(%sp)
+  5c:	a0fb 0000 0000 	bsr 5c <__fixdfdi+0x5c>
+  62:	99fb           	rtsframe
+  64:	20fb ffff ffff 	moveq #0x7fffffffffffffff,%q0
+  6a:	ffff ff7f 
+  6e:	99fb           	rtsframe

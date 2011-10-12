@@ -1,0 +1,22 @@
+Sat Mar 27 20:53:07 1999  Linas Vepstas (linas@linas.org)
+
+	* all.texi: Add I370 documentations.
+	* as.texinfo: Likewise.
+
+	* c-i370.texi: New.
+
+	* Makefile.am (CPU_DOCS): Add c-i370.texi.
+
+	* Makefile.in: Regenerated.
+
+Sun Mar  7 16:16:57 1999  H.J. Lu  (hjl@gnu.org)
+
+	* c-i386.texi: Updated from gas-990223.
+
+Fri Oct  2 08:03:07 1998  "Jeff B Epler" <jepler@usgs.gov>
+
+	* gas/doc/c-i386.texi: Add i386-SIMD.
+
+Mon Jun 29 08:09:02 1998  H.J. Lu  (hjl@gnu.org)
+
+	* Makefile.in: Regenerated with automake 1.3.

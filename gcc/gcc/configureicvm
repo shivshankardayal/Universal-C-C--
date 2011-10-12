@@ -1,0 +1,11 @@
+#!/bin/sh
+mkdir /usr/local
+mkdir /usr/local/icvm
+mkdir /usr/local/internetc/icvm-unknown-elf
+mkdir /usr/local/internetc/icvm-unknown-elf/lib
+mkdir /usr/local/internetc/icvm-unknown-elf/include
+ln -s /usr/local/internetc/icvm-unknown-elf/lib /usr/local/internetc/lib
+ln -s /usr/local/internetc/icvm-unknown-elf/include /usr/local/internetc/include
+./configure --with-headers=../include --target=icvm-unknown-elf --prefix=/usr/local/internetc --program-prefix=i
+
+

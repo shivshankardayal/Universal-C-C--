@@ -1,0 +1,9 @@
+This Source Code Release is very raw. You will have to build both the
+virtual machine and the compiler/libaries.
+
+See README.TXT in vm for instructions on how to build the virtual machine
+See BUILDDEVSYS.txt in gcc for instructions on how to compile GCC and libraries.
+
+
+The demos in xdemo and gldemo can be built by just typing 'make', once
+the vm and gcc/libraries have been built and installed.

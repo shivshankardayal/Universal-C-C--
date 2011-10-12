@@ -1,0 +1,330 @@
+Sat Mar 20 21:16:53 1999  Christopher C Chimelis <chris@classnet.med.miami.edu>
+
+	* config.bfd (arm-*-elf*, arm-*-linux*): Add
+	targ_selvecs=armlinux_vec.
+
+Fri Sep  4 13:54:23 1998  David Miller  <davem@dm.cobaltmicro.com>
+
+	* elf32-sparc.c (elf32_sparc_relocate_section): Properly adjust 
+	the addend of a dynamic relocation referencing a section.
+	* elf64-sparc.c (sparc64_elf_relocate_section): Likewise.
+	(sparc64_elf_finish_dynamic_symbol): Fix the PLT relocation 
+	offset.
+
+Wed Feb 24 08:12:14 1999  H.J. Lu  (hjl@gnu.org)
+
+	* acinclude.m4: Updated from the gas snasphot 1999-02-23.
+	* aclocal.m4: Likewise.
+	* configure.in: Likewise.
+
+	* configure: Regenerated.
+
+Tue Feb 23 01:57:53 1999  Linas Vepstas (linas@linas.org)
+
+	* cpu-i370.c, elf32-i370.c: New.
+
+	* Makefile.am: Add support for Linux/IBM 370.
+	* archures.c: Likewise.
+	* config.bfd: Likewise.
+	* configure.in: Likewise.
+	* elf.c (prep_headers): Likewise.
+	* reloc.c: Likewise.
+	* targets.c (bfd_elf32_bigmip): Likewise.
+
+	* Makefile.in: Regenerated.
+	* bfd-in2.h: Likewise.
+	* libbfd.h: Likewise.
+	* configure: Likewise.
+
+Mon Feb 22 23:34:07 1999  Ian Lance Taylor <ian@cygnus.com>
+
+	* elf-bfd.h (ELF_LINK_HASH_REF_REGULAR_NONWEAK): New.
+	(ELF_LINK_HASH_DYNAMIC_ADJUSTED): Updated.
+	(ELF_LINK_HASH_NEEDS_COPY): Likewise.
+	(ELF_LINK_HASH_NEEDS_PLT): Likewise.
+	(ELF_LINK_NON_ELF): Likewise.
+	(ELF_LINK_HIDDEN): Likewise.
+	(ELF_LINK_FORCED_LOCAL): Likewise.
+
+	* elflink.h (elf_merge_symbol, elf_link_add_object_symbols):
+	Undo the changes made on Sat Feb 20 10:50:32 1999 by H.J. Lu
+	(hjl@gnu.org) and  Thu Feb 18 15:07:51 1999 by Ian Lance Taylor
+	<ian@cygnus.com>.
+
+	* elflink.h (elf_link_add_object_symbols): Handle
+	ELF_LINK_HASH_REF_REGULAR_NONWEAK
+
+Sat Feb 20 10:50:32 1999  H.J. Lu  (hjl@gnu.org)
+
+	* elflink.h (elf_merge_symbol): Do merge with shared object
+	for weak undefined symols when building regular object.
+
+Thu Feb 18 15:07:51 1999  Ian Lance Taylor <ian@cygnus.com>
+
+	* elflink.h (elf_merge_symbol, elf_link_add_object_symbols):
+	Don't merge with shared object for weak undefined symols.
+
+Wed Feb  3 16:40:29 1999  Ian Lance Taylor <ian@cygnus.com>
+
+	* elf32-i386.c (elf_i386_reloc_type_lookup): Handle
+	BFD_RELOC_CTOR.
+
+Mon Jan 18 07:36:23 1999  Maciej W. Rozycki <macro@ds2.pg.gda.pl>
+
+	* binary.c (binary_set_section_contents): Correctly set
+	abfd->output_has_begun.
+
+Mon Jan 18 06:36:15 1999  H.J. Lu  (hjl@gnu.org)
+
+	* elf.c (assign_file_positions_for_segments): Only adjust
+	"p_align" when needed.
+
+Mon Jan 18 00:47:09 1999  Ian Lance Taylor  <ian@cygnus.com>
+
+	* elf.c (assign_file_positions_for_segments): Set "p_align" to
+	the maximum alignment for the none demand paged binary.
+
+Thu Jan 14 20:54:50 1999  H.J. Lu  (hjl@gnu.org)
+
+	* elf32-ppc.c (ppc_elf_relocate_section): Updated from the gas
+	snapshot, 990105.
+
+Wed Dec 23 08:59:23 1998  Maciej W. Rozycki <macro@ds2.pg.gda.pl>
+
+	* elf32-i386.c (elf_howto_table): Fix 8/16-bit relocations.
+
+Tue Dec  8 07:51:09 1998  H.J. Lu  (hjl@gnu.org)
+
+	* elf.c (copy_private_bfd_data): Use bfd_zalloc instead of
+	bfd_alloc.
+
+Wed Dec  2 00:58:37 1998  Ian Lance Taylor  <ian@cygnus.com>
+
+	* elflink.h (elf_adjust_dynamic_symbol): Warn on an attempt to
+	link against a dynamic symbol with no type or size.
+
+Tue Dec  1 19:28:56 1998  H.J. Lu  (hjl@gnu.org)
+
+	From Jack Howarth <howarth@bromo.med.uc.edu>:
+
+	The following patch should fix things to use EM_SPARCV9 when
+	producing binaries while continuing to accept the old value.
+
+	* elf64-sparc.c (ELF_MACHINE_CODE): Defined as EM_SPARCV9.
+	(ELF_MACHINE_ALT1): Defined as EM_OLD_SPARCV9.
+
+	* elf.c (prep_headers): Change EM_SPARC64 to EM_SPARCV9.
+
+1998-11-16  Philip Blundell  <philb@gnu.org>
+
+	Remove remaining references to obsolete file:
+	* configure.in: Replace aoutarm32.lo with aout-arm.lo.
+	* configure: Regenerated.
+	* Makefile.am (BFD32_BACKENDS_CFILES): Delete aoutarm32.c.
+	* Makefile.in: Regenerated.
+	
+1998-10-27  Philip Blundell  <pb@nexus.co.uk>
+
+	* elf32-arm.c (elf_arm_merge_private_bfd_data): Keep in step with
+	changes to include/elf/arm.h.
+
+Sat Oct  3 18:40:06 1998  Philip Blundell  <philb@gnu.org>
+
+	* elf32-arm.c: Delete definition of reloc numbers; get them
+	from elf/arm.h instead.
+	(elf_arm_set_private_flags): New function.
+	(elf_arm_merge_private_bfd_data): Likewise.
+
+	* aout-arm.c: Add missing PIC support.
+	* aoutarm32.c: Obsolete, deleted.
+
+	* config.bfd (arm-*-netbsd*): Undo previous change.
+	* targets.c (bfd_target_vector): Likewise.
+
+	* Makefile.am (BFD32_BACKENDS): Restore armnetbsd.lo.
+	* Makefile.in: Regenerated.
+
+1998-10-02  Philip Blundell  <pb@nexus.co.uk>
+
+	* elf32-arm.c (elf_arm_finish_dynamic_symbol): Remove spurious
+	assertion.
+
+	From Jick Pick <jim@jimpick.com>:
+	* elf.c, elfcode.h, elflink.h: Handle Elf_External_Versym
+	correctly on systems where such structs are padded.
+
+	From Raffaele Sena <raff@aromatic.com>:
+	* elf32-arm.c (elf_arm_relocate_section): Fix problem with
+	versioned symbols.
+
+Tue Nov 10 19:21:36 1998  Ralf Baechle (ralf@uni-koblenz.de)
+
+	* elf32-mips.c (_bfd_mips_elf_section_from_shdr): Fix setting
+	SEC_DEBUGGING.
+	(mips_elf_always_size_sections): Fix section size.
+	(_bfd_mips_elf_fake_sections): Likewise.
+	(mips_elf_final_link): Likewise.
+	(mips_elf_relocate_section): Fix relocation. 
+
+Thu Oct  8 07:57:07 1998  H.J. Lu  (hjl@gnu.org)
+
+	* elf.c (copy_private_bfd_data): Update from gas-981008.
+
+Thu Oct  1 08:02:54 1998  H.J. Lu  (hjl@gnu.org)
+
+	* Makefile.am (BFD32_BACKENDS): Remove armnetbsd.lo and
+	aoutarm32.lo.
+
+	* Makefile.in: Regenerated.
+
+	* targets.c (bfd_target_vector): Remove armnetbsd_vec.
+
+	* config.bfd (arm-*-netbsd*): Removed.
+
+Fri Sep 25 20:03:29 1998  H.J. Lu  (hjl@gnu.org)
+
+	* elf64-alpha.c (elf64_alpha_additional_program_headers): Return 0.
+
+Wed Sep 23 10:21:17 1998  "Brad M. Garcia" <bgarcia@fore.com>
+
+	* config.bfd (i[3456]86-*-vxworks*): New target.
+	(mips*-*-vxworks*: New target.
+
+Thu Sep 17 16:03:28 1998  Richard Henderson  <rth@cygnus.com>
+
+	* elf64-alpha.c (elf64_alpha_adjust_dynamic_symbol): Don't
+	transform a defweak into a plt entry.
+	(elf64_alpha_calc_dynrel_sizes): Allow room for secondary
+	plt entry references to receive a RELATIVE reloc.
+	(elf64_alpha_finish_dynamic_symbol): Fill them in.
+	(elf64_alpha_relocate_section): Assert we don't overrun
+	the allocated relocation space.
+
+Wed Sep  9 03:36:26 1998  Gabriel Paubert <paubert@iram.es>
+
+	* elf32-ppc.c (ppc_elf_howto_raw):
+
+	1. Use complain_overflow_dont for R_PPC_GOT16_LO,
+	   R_PPC_PLT16_LO and R_PPC_SECTOFF_LO.
+	2. Change rightshift to 16 and use ppc_elf_addr16_ha_reloc for
+	   R_PPC_PLT16_HA ,R_PPC_SECTOFF_HA and R_PPC_EMB_NADDR16_HA.
+	3. Set pc_relative/pcrel_offset to false and set dst_mask to
+	   0xffffffff for R_PPC_SECTOFF.
+
+	* ppcboot.c (ppcboot_object_p): Doesn't check if
+	hdr.pc_compatibility is zero.
+	(ppcboot_vec): Use little endian function for headers.
+
+Wed Aug 12 00:08:56 1998  H.J. Lu  (hjl@gnu.org)
+
+	* elf64-alpha.c (elf64_alpha_merge_ind_symbols): Add prototype.
+	(alpha_elf_force_local_symbol_p): New macro for forced local
+	symbol.
+	(alpha_elf_dynamic_symbol_p): Use alpha_elf_force_local_symbol_p
+	to check forced local symbol.
+	(elf64_alpha_calc_dynrel_sizes): Likewise.
+	(elf64_alpha_relocate_section): Likewise.
+
+Sun Aug  9 19:30:27 1998  Richard Henderson <rth@dot.cygnus.com>
+
+        * elf64-alpha.c (alpha_elf_dynamic_symbol_p): Undef weak symbols
+	are always dynamic.
+	(elf64_alpha_calc_dynrel_sizes): Allow enough room for RELATIVE
+	.got relocs in -Bsymbolic shared objects.
+
+Sun Aug  9 11:52:47 1998  H.J. Lu  (hjl@gnu.org)
+
+	* elf32-arm.c (elf_arm_size_dynamic_sections): Use bfd_zalloc
+	instead of bfd_alloc for allocating the section contents.
+	* elf32-i386.c (elf_i386_size_dynamic_sections): Likewise.
+	* elf32-m68k.c (elf_m68k_size_dynamic_sections): Likewise.
+	* elf32-mips.c (mips_elf_size_dynamic_sections): Likewise.
+	* elf32-sparc.c (elf32_sparc_size_dynamic_sections): Likewise.
+	* elf64-alpha.c (elf64_alpha_do_reloc_gpdisp): Likewise.
+	* elf64-mips.c (mips_elf64_write_relocs): Likewise.
+	* elfcode.h (write_relocs): Likewise.
+	* elflink.h (NAME(bfd_elf,size_dynamic_sections)): Likewise.
+	(NAME(bfd_elf,size_dynamic_sections)): Likewise.
+	(NAME(bfd_elf,size_dynamic_sections)): Likewise.
+	(elf_bfd_final_link): Likewise.
+	
+Mon Jun 29 08:09:02 1998  H.J. Lu  (hjl@gnu.org)
+
+	* Makefile.in: Regenerated with automake 1.3.
+
+Wed Jun  3 20:22:40 1998  Philip Blundell  <Philip.Blundell@pobox.com>
+
+	* aoutarm32.c (bfd_reloc_type_lookup): Use BFD_RELOC_ARM_JUMP_SLOT
+	not BFD_RELOC_ARM_JMPSLOT.
+
+	* elf32-arm.c: New reloc names and numbers, as per draft ARM ELF
+ 	ABI.
+
+Mon Apr 27 19:37:50 1998  Philip Blundell  <philb@gnu.org>
+
+	* reloc.c: Add new relocs for ARM/ELF.
+	* elf32-arm.c: New PLT design; modified relocs to be closer to
+	i386 way of things.  Patch from Pat Beirne
+	<patb@corelcomputer.com>.
+
+	* bfd-in2.h, libbfd.h: Regenerated.
+
+Tue Feb 17 07:38:02 1998  H.J. Lu  (hjl@gnu.org)
+
+	* armnetbsd.c (DEFAULT_MID): New, defined as M_ARM6_NETBSD.
+	(MACHTYPE_OK): Removed.
+
+Fri Jan 16 10:06:19 1998  Philip Blundell  <pb@nexus.co.uk>
+
+	* bfd-in2.h: regenerated.
+	* libbfd.h: likewise.
+
+	* elf32-arm.c: Use REL relocs not RELA.
+
+Thu Dec 25 23:42:21 1997  Philip Blundell  <Philip.Blundell@pobox.com>
+
+	* config.bfd: (arm-*-linux*, arm-*-elf, arm-*-netbsd): New
+	targets.
+ 	* configure.in: Likewise.
+	* Makefile.am: Likewise.
+	* targets.c: Likewise.
+	* libaout.h: Likewise.
+	* netbsd.h: Likewise.
+	* elf.c (prep_headers): Likewise.
+	* aoutarm32.c: New file.  Need to merge this with arm-aout.c at
+	some point - there's no need to have two of them. 
+ 	* armnetbsd.c, elf32-arm.c: New files.
+	* configure: Regenerated.
+	* Makefile.in: Regenerated.
+
+	* reloc.c: Add ARM relocations for PIC.
+	* bfd-in2.h: Likewise.
+
+Fri Oct 31 19:40:48 1997  H.J. Lu  (hjl@gnu.ai.mit.edu)
+
+	* configure.in (armlinux_vec): Use *.lo.
+
+	* configure: regenerated.
+
+Sun Oct 26 10:19:43 1997  H.J. Lu  (hjl@gnu.ai.mit.edu)
+
+	* Makefile.am: Rebuild dependencies.
+	(BFD32_BACKENDS): Add armlinux.lo.
+	(BFD32_BACKENDS_CFILES): Add armlinux.c.
+
+Tue Jun 17 07:18:26 1997  H.J. Lu  (hjl@gnu.ai.mit.edu)
+
+	* armlinux.c (bfd_armlinux_size_dynamic_sections): Remove
+	declaration.
+	* bfd-in.h: Moved to here.
+
+Sat May  3 12:04:43 1997  Philip Blundell  <pjb27@cam.ac.uk>
+
+	From Russell King <rmk92@ecs.soton.ac.uk>:
+	* armlinux.c: New file.
+	* config.bfd: add support for Linux/ARM.
+	* configure.in: likewise.
+	* targets.c: likewise.
+	* hosts/armlinux.h: New file.
+
+	* configure: regenerated.

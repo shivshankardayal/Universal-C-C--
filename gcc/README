@@ -1,0 +1,37 @@
+
+
+This will build and install the icvm C/C++ compiler and binutilities.
+
+You will have to be root to make this and also have /usr/local/bin
+set as part of your path variable, before you start.
+
+IMPORTANT: MAKE SURE /usr/local/bin IS IN YOUR PATH VARIABLE BEFORE YOU ATTEMPT
+THIS BUILD
+
+To build, enter this directory and type:
+
+	make
+
+The binutils will build first, then the compiler.
+The install will occur in /usr/local/icvm with links to the binaries in
+/usr/local/bin.
+
+The links are important for the success of gcc, as it calls the binutils while 
+it is building.
+
+There are no libraries installed yet, but you can test by typing
+
+	igcc -S test.c
+
+You should be able to edit and view the machine language file test.s.
+
+
+
+All commands built for icvm will be prepended by 'i'.
+
+For instance, igcc, ias, istrip, ig++, ild, etc.
+
+
+
+
+

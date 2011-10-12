@@ -1,0 +1,112 @@
+# this is the makefile for MKLINUX - powerpc
+# mine was done on MKLINUX release DR3 PowerPC on a Performa 6116.
+# It is intended to be an example of alternate ports. Maybe someone
+# could model a G3/G4 port based on this. I ported this to a 601,
+# as that is what I have to test with, and wanted to test alternate
+# architectures on my limited budget.
+
+ICVMSRC = icvmvm.c icvmsys.c icvmxsys.c icvmfile.c icvmerr.c icvmnet.c \
+	icvmfast.c icvmid.c icvmstring.c icvmproc.c icvmopt.c icvmsup.c
+
+# NOTE - ordering IS important here.
+ICVMOBJS = icvmsup.o icvmvm.o  \
+	icvmsup1.o\
+	icvmsup2.o\
+	icvmsup3.o\
+	icvmsup4.o\
+	icvmsup5.o\
+	icvmsup6.o\
+	icvmsup7.o\
+	icvmsup8.o\
+	icvmsup9.o\
+	icvmsup10.o\
+	icvmsup11.o\
+	icvmsup12.o\
+	icvmsup13.o\
+	icvmfile.o icvmerr.o icvmnet.o \
+	icvm.o icvmid.o icvmproc.o \
+	icvmfast.o\
+	icvmstring.o icvmsys.o icvmxsys.o
+
+
+all:  icvm 
+
+
+# choose your compiler
+# NOTE - I use alot of cross compilers, hence the extra names
+
+COMPILER = cc
+
+
+
+
+
+
+
+CC = ${COMPILER} -fno-exceptions -mcpu=601 -DBIGENDIAN -Dmklinux -fsigned-char  -O2 -fomit-frame-pointer 
+
+SUPOPTS=  -c  
+
+.c.o:
+	$(CC) -c $*.c
+
+.cc.o:
+	$(CC) -c $*.cc
+
+
+
+clean:
+	rm  *.o icvm
+
+icvm : ${INC} icvmload.h  ${ICVMOBJS}
+	${COMPILER}    \
+		 ${ICVMOBJS} \
+		-L/usr/X11R6/lib \
+		-lICE -lFS  -lX11 -lm -o icvm
+
+install: icvm
+	cp icvm /bin
+
+icvmsup.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP $*.c -o $*.o
+
+icvmsup1.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP1 icvmsup.c -o icvmsup1.o
+
+icvmsup2.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP2 icvmsup.c -o icvmsup2.o
+
+icvmsup3.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP3 icvmsup.c -o icvmsup3.o
+
+icvmsup4.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP4 icvmsup.c -o icvmsup4.o
+
+icvmsup5.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP5 icvmsup.c -o icvmsup5.o
+
+icvmsup6.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP6 icvmsup.c -o icvmsup6.o
+
+icvmsup7.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP7 icvmsup.c -o icvmsup7.o
+
+icvmsup8.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP8 icvmsup.c -o icvmsup8.o
+
+icvmsup9.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP9 icvmsup.c -o icvmsup9.o
+
+icvmsup10.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP10 icvmsup.c -o icvmsup10.o
+
+icvmsup11.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP11 icvmsup.c -o icvmsup11.o
+
+icvmsup12.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP12 icvmsup.c -o icvmsup12.o
+
+icvmsup13.o: icvmsup.c
+	$(CC) $(SUPOPTS) -DICVMSUP13 icvmsup.c -o icvmsup13.o
+
+

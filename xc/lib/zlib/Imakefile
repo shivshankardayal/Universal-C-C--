@@ -1,0 +1,21 @@
+XCOMM $TOG: Imakefile /main/4 1998/02/04 14:32:56 kaleb $
+#define DoNormalLib   YES
+#define DoSharedLib   NO
+#define DoDebugLib    NO
+#define DoProfileLib  NO
+#define HasSharedData NO
+#define LibName       z
+#define SoRev         SOZLIBREV
+#define LibHeaders    NO
+
+SRCS = adler32.c compress.c crc32.c gzio.c uncompr.c deflate.c \
+       trees.c zutil.c inflate.c infblock.c inftrees.c \
+       infcodes.c infutil.c inffast.c
+
+OBJS = adler32.o compress.o crc32.o gzio.o uncompr.o deflate.o \
+       trees.o zutil.o inflate.o infblock.o inftrees.o \
+       infcodes.o infutil.o inffast.o
+
+#include <Library.tmpl>
+
+DependTarget()

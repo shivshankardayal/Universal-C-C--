@@ -1,0 +1,624 @@
+																																																																				
+#CC=echeck   -I../../../include  -I../../../include/X11\
+	 -I../../../include/X11/extensions   -O2     
+CC=igcc   -I../../../include  -I../../../include/X11\
+	 -I../../../include/X11/extensions   -O2 -c
+AR=iar -qc 
+
+
+
+.c.o:
+	${CC} $*.c
+
+OBJ=\
+AddDIC.o \
+AddSF.o \
+AllCells.o \
+AllPlanes.o \
+AllowEv.o \
+AutoRep.o \
+Backgnd.o \
+BdrWidth.o \
+Bell.o \
+Border.o \
+CCC.o \
+ChAccCon.o \
+ChActPGb.o \
+ChClMode.o \
+ChCmap.o \
+ChGC.o \
+ChKeyCon.o \
+ChPntCon.o \
+ChProp.o \
+ChSaveSet.o \
+ChWAttrs.o \
+ChWindow.o \
+ChkIfEv.o \
+ChkMaskEv.o \
+ChkTypEv.o \
+ChkTypWEv.o \
+ChkWinEv.o \
+CirWin.o \
+CirWinDn.o \
+CirWinUp.o \
+ClDisplay.o \
+Clear.o \
+ClearArea.o \
+ConfWind.o \
+ConnDis.o \
+Context.o \
+ConvSel.o \
+CopyArea.o \
+CopyCmap.o \
+CopyGC.o \
+CopyPlane.o \
+CrBFData.o \
+CrCmap.o \
+CrCursor.o \
+CrGC.o \
+CrGlCur.o \
+CrPFBData.o \
+CrPixmap.o \
+CrWindow.o \
+Cursor.o \
+CvColW.o \
+CvCols.o \
+DefCursor.o \
+DelProp.o \
+Depths.o \
+DestSubs.o \
+DestWind.o \
+DisName.o \
+DrArc.o \
+DrArcs.o \
+DrLine.o \
+DrLines.o \
+DrPoint.o \
+DrPoints.o \
+DrRect.o \
+DrRects.o \
+DrSegs.o \
+ErrDes.o \
+ErrHndlr.o \
+EvToWire.o \
+FSSaver.o \
+FSWrap.o \
+FetchName.o \
+FillArc.o \
+FillArcs.o \
+FillPoly.o \
+FillRct.o \
+FillRcts.o \
+FilterEv.o \
+Flush.o \
+Font.o \
+FontInfo.o \
+FontNames.o \
+FreeCmap.o \
+FreeCols.o \
+FreeCurs.o \
+FreeEData.o \
+FreeGC.o \
+FreePix.o \
+GCMisc.o \
+Geom.o \
+GetAtomNm.o \
+GetColor.o \
+GetDflt.o \
+GetFPath.o \
+GetFProp.o \
+GetGCVals.o \
+GetGeom.o \
+GetHColor.o \
+GetHints.o \
+GetIFocus.o \
+GetImage.o \
+GetKCnt.o \
+GetMoEv.o \
+GetNrmHint.o \
+GetPCnt.o \
+GetPntMap.o \
+GetProp.o \
+GetRGBCMap.o \
+GetSOwner.o \
+GetSSaver.o \
+GetStCmap.o \
+GetTxtProp.o \
+GetWAttrs.o \
+GetWMCMapW.o \
+GetWMProto.o \
+GrButton.o \
+GrKey.o \
+GrKeybd.o \
+GrPointer.o \
+GrServer.o \
+HVC.o \
+HVCGcC.o \
+HVCGcV.o \
+HVCGcVC.o \
+HVCMnV.o \
+HVCMxC.o \
+HVCMxV.o \
+HVCMxVC.o \
+HVCMxVs.o \
+HVCWpAj.o \
+Host.o \
+ICWrap.o \
+IMWrap.o \
+Iconify.o \
+IdOfPr.o \
+IfEvent.o \
+ImText.o \
+ImText16.o \
+ImUtil.o \
+InitExt.o \
+InsCmap.o \
+IntAtom.o \
+KeyBind.o \
+KeysymStr.o \
+KillCl.o \
+LRGB.o \
+Lab.o \
+LabGcC.o \
+LabGcL.o \
+LabGcLC.o \
+LabMnL.o \
+LabMxC.o \
+LabMxL.o \
+LabMxLC.o \
+LabWpAj.o \
+LiHosts.o \
+LiICmaps.o \
+LiProps.o \
+ListExt.o \
+LoadFont.o \
+LockDis.o \
+LookupCol.o \
+LowerWin.o \
+Luv.o \
+LuvGcC.o \
+LuvGcL.o \
+LuvGcLC.o \
+LuvMnL.o \
+LuvMxC.o \
+LuvMxL.o \
+LuvMxLC.o \
+LuvWpAj.o \
+Macros.o \
+MapRaised.o \
+MapSubs.o \
+MapWindow.o \
+MaskEvent.o \
+Misc.o \
+ModMap.o \
+MoveWin.o \
+NextEvent.o \
+OCWrap.o \
+OMWrap.o \
+OfCCC.o \
+OpenDis.o \
+ParseCmd.o \
+ParseCol.o \
+ParseGeom.o \
+PeekEvent.o \
+PeekIfEv.o \
+Pending.o \
+PixFormats.o \
+PmapBgnd.o \
+PmapBord.o \
+PolyReg.o \
+PolyTxt.o \
+PolyTxt16.o \
+PrOfId.o \
+PropAlloc.o \
+PutBEvent.o \
+QBlack.o \
+QBlue.o \
+QGreen.o \
+QRed.o \
+QWhite.o \
+QuBest.o \
+QuCol.o \
+QuColor.o \
+QuColors.o \
+QuCols.o \
+QuCurShp.o \
+QuExt.o \
+QuKeybd.o \
+QuPntr.o \
+QuStipShp.o \
+QuTextE16.o \
+QuTextExt.o \
+QuTileShp.o \
+QuTree.o \
+Quarks.o \
+RaiseWin.o \
+RdBitF.o \
+RecolorC.o \
+ReconfWM.o \
+ReconfWin.o \
+Region.o \
+RegstFlt.o \
+RepWindow.o \
+RestackWs.o \
+RotProp.o \
+ScrResStr.o \
+SelInput.o \
+SendEvent.o \
+SetBack.o \
+SetCCC.o \
+SetCRects.o \
+SetClMask.o \
+SetClOrig.o \
+SetDashes.o \
+SetFPath.o \
+SetFont.o \
+SetFore.o \
+SetFunc.o \
+SetGetCols.o \
+SetHints.o \
+SetIFocus.o \
+SetLStyle.o \
+SetLocale.o \
+SetNrmHint.o \
+SetPMask.o \
+SetPntMap.o \
+SetRGBCMap.o \
+SetSOwner.o \
+SetSSaver.o \
+SetStCmap.o \
+SetState.o \
+SetStip.o \
+SetTSOrig.o \
+SetTile.o \
+SetTxtProp.o \
+SetWMCMapW.o \
+SetWMProto.o \
+StBytes.o \
+StCol.o \
+StColor.o \
+StColors.o \
+StCols.o \
+StNColor.o \
+StName.o \
+StrKeysym.o \
+StrToText.o \
+Sync.o \
+Synchro.o \
+Text.o \
+Text16.o \
+TextExt.o \
+TextExt16.o \
+TextToStr.o \
+TrCoords.o \
+UNDEFINED.o \
+UndefCurs.o \
+UngrabBut.o \
+UngrabKbd.o \
+UngrabKey.o \
+UngrabPtr.o \
+UngrabSvr.o \
+UninsCmap.o \
+UnldFont.o \
+UnmapSubs.o \
+UnmapWin.o \
+VisUtil.o \
+WMGeom.o \
+WMProps.o \
+WarpPtr.o \
+WinEvent.o \
+Window.o \
+Withdraw.o \
+WrBitF.o \
+XKB.o \
+XKBAlloc.o \
+XKBBell.o \
+XKBBind.o \
+XKBCompat.o \
+XKBCtrls.o \
+XKBCvt.o \
+XKBExtDev.o \
+XKBGAlloc.o \
+XKBGeom.o \
+XKBGetByName.o \
+XKBGetMap.o \
+XKBList.o \
+XKBMAlloc.o \
+XKBMisc.o \
+XKBNames.o \
+XKBRdBuf.o \
+XKBSetGeom.o \
+XKBSetMap.o \
+XKBUse.o \
+XKBleds.o \
+XRGB.o \
+XYZ.o \
+XlibAsync.o \
+Xrm.o \
+cmsAllCol.o \
+cmsAllNCol.o \
+cmsCmap.o \
+cmsColNm.o \
+cmsGlobls.o \
+cmsInt.o \
+cmsLkCol.o \
+cmsProp.o \
+evtomask.o \
+globals.o \
+imCallbk.o \
+imConv.o \
+imDefFlt.o \
+imDefIc.o \
+imDefIm.o \
+imDefLkup.o \
+imDispch.o \
+imEvToWire.o \
+imExten.o \
+imImSw.o \
+imInsClbk.o \
+imInt.o \
+imLcFlt.o \
+imLcGIc.o \
+imLcIc.o \
+imLcIm.o \
+imLcLkup.o \
+imLcPrs.o \
+imLcSIc.o \
+imRm.o \
+imRmAttr.o \
+imThaiIc.o \
+imThaiIm.o \
+imTrX.o \
+imTrans.o \
+imTransR.o \
+lcCT.o \
+lcCharSet.o \
+lcConv.o \
+lcDB.o \
+lcDefConv.o \
+lcDynamic.o \
+lcEuc.o \
+lcFile.o \
+lcGenConv.o \
+lcGeneric.o \
+lcInit.o \
+lcJis.o \
+lcPrTxt.o \
+lcPubWrap.o \
+lcPublic.o \
+lcRM.o \
+lcSjis.o \
+lcStd.o \
+lcTxtPr.o \
+lcUTF.o \
+lcUtil.o \
+lcWrap.o \
+locking.o \
+mbWMProps.o \
+mbWrap.o \
+omDefault.o \
+omGeneric.o \
+omImText.o \
+omText.o \
+omTextEsc.o \
+omTextExt.o \
+omTextPer.o \
+omXChar.o \
+udcInf.o \
+uvY.o \
+wcWrap.o \
+xyY.o \
+cmsMath.o \
+cmsTrig.o \
+XlibInt.o \
+imThaiFlt.o \
+PutImage.o \
+sys.o \
+
+
+##aixlcLoad.o \ aix specific
+
+AuOBJ=\
+../Xau/AuDispose.o \
+../Xau/AuFileName.o \
+../Xau/AuGetAddr.o \
+../Xau/AuGetBest.o \
+../Xau/AuLock.o \
+../Xau/AuRead.o \
+../Xau/AuUnlock.o \
+../Xau/AuWrite.o \
+../Xau/Autest.o 
+
+
+SMOBJ=\
+../SM/sm_auth.o \
+../SM/sm_client.o \
+../SM/sm_error.o \
+../SM/sm_genid.o \
+../SM/sm_manager.o \
+../SM/sm_misc.o \
+../SM/sm_process.o 
+
+ICEOBJ=\
+../ICE/accept.o \
+../ICE/authutil.o \
+../ICE/connect.o \
+../ICE/error.o \
+../ICE/getauth.o \
+../ICE/iceauth.o \
+../ICE/listen.o \
+../ICE/listenwk.o \
+../ICE/locking.o \
+../ICE/misc.o \
+../ICE/ping.o \
+../ICE/process.o \
+../ICE/protosetup.o \
+../ICE/register.o \
+../ICE/replywait.o \
+../ICE/setauth.o \
+../ICE/shutdown.o \
+../ICE/watch.o 
+
+TxtOBJ=\
+../Xtst/XRecord.o \
+../Xtst/XTest.o
+
+xkbfileOBJ=\
+../xkbfile/maprules.o \
+../xkbfile/srvmisc.o \
+../xkbfile/xkbatom.o \
+../xkbfile/xkbbells.o \
+../xkbfile/xkbconfig.o \
+../xkbfile/xkbdraw.o \
+../xkbfile/xkberrs.o \
+../xkbfile/xkbmisc.o \
+../xkbfile/xkbout.o \
+../xkbfile/xkbtext.o \
+../xkbfile/xkmout.o \
+../xkbfile/xkmread.o 
+
+XiOBJ=\
+../Xi/XAllowDv.o \
+../Xi/XChgDCtl.o \
+../Xi/XChgFCtl.o \
+../Xi/XChgKMap.o \
+../Xi/XChgKbd.o \
+../Xi/XChgPnt.o \
+../Xi/XChgProp.o \
+../Xi/XCloseDev.o \
+../Xi/XDevBell.o \
+../Xi/XExtInt.o \
+../Xi/XExtToWire.o \
+../Xi/XGMotion.o \
+../Xi/XGetBMap.o \
+../Xi/XGetDCtl.o \
+../Xi/XGetFCtl.o \
+../Xi/XGetKMap.o \
+../Xi/XGetMMap.o \
+../Xi/XGetProp.o \
+../Xi/XGetVers.o \
+../Xi/XGrDvBut.o \
+../Xi/XGrDvKey.o \
+../Xi/XGrabDev.o \
+../Xi/XGtFocus.o \
+../Xi/XGtSelect.o \
+../Xi/XListDev.o \
+../Xi/XOpenDev.o \
+../Xi/XQueryDv.o \
+../Xi/XSelect.o \
+../Xi/XSetBMap.o \
+../Xi/XSetDVal.o \
+../Xi/XSetMMap.o \
+../Xi/XSetMode.o \
+../Xi/XSndExEv.o \
+../Xi/XStFocus.o \
+../Xi/XUngrDev.o \
+../Xi/XUngrDvB.o \
+../Xi/XUngrDvK.o 
+
+XdmcpOBJ=\
+../Xdmcp/A8Eq.o \
+../Xdmcp/AA16.o \
+../Xdmcp/AA32.o \
+../Xdmcp/AA8.o \
+../Xdmcp/Alloc.o \
+../Xdmcp/AofA8.o \
+../Xdmcp/CA8.o \
+../Xdmcp/CmpKey.o \
+../Xdmcp/DA16.o \
+../Xdmcp/DA32.o \
+../Xdmcp/DA8.o \
+../Xdmcp/DAofA8.o \
+../Xdmcp/DecKey.o \
+../Xdmcp/Fill.o \
+../Xdmcp/Flush.o \
+../Xdmcp/GenKey.o \
+../Xdmcp/IncKey.o \
+../Xdmcp/RA16.o \
+../Xdmcp/RA32.o \
+../Xdmcp/RA8.o \
+../Xdmcp/RAofA8.o \
+../Xdmcp/RC16.o \
+../Xdmcp/RC32.o \
+../Xdmcp/RC8.o \
+../Xdmcp/RHead.o \
+../Xdmcp/RR.o \
+../Xdmcp/RaA16.o \
+../Xdmcp/RaA32.o \
+../Xdmcp/RaA8.o \
+../Xdmcp/RaAoA8.o \
+../Xdmcp/Unwrap.o \
+../Xdmcp/WA16.o \
+../Xdmcp/WA32.o \
+../Xdmcp/WA8.o \
+../Xdmcp/WAofA8.o \
+../Xdmcp/WC16.o \
+../Xdmcp/WC32.o \
+../Xdmcp/WC8.o \
+../Xdmcp/Whead.o \
+../Xdmcp/Wrap.o 
+
+XextOBJ=\
+../Xext/DPMS.o \
+../Xext/MITMisc.o \
+../Xext/XAppgroup.o \
+../Xext/XEVI.o \
+../Xext/XLbx.o \
+../Xext/XMultibuf.o \
+../Xext/XPanoramiX.o \
+../Xext/XSecurity.o \
+../Xext/XShape.o \
+../Xext/XShm.o \
+../Xext/XSync.o \
+../Xext/XTestExt1.o \
+../Xext/Xcup.o \
+../Xext/Xdbe.o \
+../Xext/extutil.o \
+../Xext/globals.o 
+
+XIEOBJ=\
+../XIE/abort.o \
+../XIE/await.o \
+../XIE/clientdata.o \
+../XIE/colorlist.o \
+../XIE/conven.o \
+../XIE/dummy.o \
+../XIE/elements.o \
+../XIE/errors.o \
+../XIE/events.o \
+../XIE/free.o \
+../XIE/ieee.o \
+../XIE/init.o \
+../XIE/lut.o \
+../XIE/photoflo.o \
+../XIE/photomap.o \
+../XIE/photospace.o \
+../XIE/roi.o \
+../XIE/technique.o \
+../XIE/utils.o 
+
+
+all: ${OBJ} libX11.a
+
+libX11.a: ${OBJ}
+	touch libX11.a
+	rm libX11.a
+	cd ../Xau;make
+	cd ../SM;make
+	cd ../ICE;make
+	cd ../Xtst;make
+	cd ../xkbfile;make
+	cd ../Xi;make
+	cd ../Xdmcp;make
+	cd ../Xext;make
+	cd ../XIE;make
+	${AR} libX11.a ${OBJ} $(AuOBJ) $(SMOBJ) $(ICEOBJ)\
+		 $(TxtOBJ) $(xkbfileOBJ) $(XiOBJ) $(XdmcpOBJ) \
+		 $(XextOBJ) $(XIEOBJ)
+
+clean:
+	rm *.o *.a
+
+install: all
+	cp libX11.a /usr/local/internetc/lib
+ 
