@@ -47,8 +47,8 @@ __RCSID("$NetBSD: fgets.c,v 1.10 1998/11/15 17:15:18 christos Exp $");
 
 #include <stdio.h>
 #include <string.h>
-#include "local.h"
-#include "reentrant.h"
+//#include "local.h"
+//#include "reentrant.h"
 
 /*
  * Read at most n-1 characters from the given file.
@@ -63,56 +63,72 @@ fgets(buf, n, fp)
 {
 	int len;
 	char *s;
+	char c;
 	unsigned char *p, *t;
-
+	//TODO:Thread protection
 	if (n <= 0)		/* sanity check */
 		return (NULL);
-
-	FLOCKFILE(fp);
-	s = buf;
-	n--;			/* leave space for NUL */
-	while (n != 0) {
-		/*
-		 * If the buffer is empty, refill it.
-		 */
-		if ((len = fp->_r) <= 0) {
-			if (__srefill(fp)) {
-				/* EOF/error: stop with partial or no line */
-				if (s == buf) {
-					FUNLOCKFILE(fp);
-					return (NULL);
-				}
-				break;
+	else
+	{
+		while(n!=0)
+		{
+			c=fgetc(fp);
+			if(c==EOF)
+				buf='\0';
+			else if(c=='\n')
+				buf='\0';
+			else
+			{
+				*buf=c;
+				buf++;
 			}
-			len = fp->_r;
 		}
-		p = fp->_p;
-
-		/*
-		 * Scan through at most n bytes of the current buffer,
-		 * looking for '\n'.  If found, copy up to and including
-		 * newline, and stop.  Otherwise, copy entire chunk
-		 * and loop.
-		 */
-		if (len > n)
-			len = n;
-		t = memchr((void *)p, '\n', (size_t)len);
-		if (t != NULL) {
-			len = ++t - p;
-			fp->_r -= len;
-			fp->_p = t;
-			(void)memcpy((void *)s, (void *)p, (size_t)len);
-			s[len] = 0;
-			FUNLOCKFILE(fp)
-			return (buf);
-		}
-		fp->_r -= len;
-		fp->_p += len;
-		(void)memcpy((void *)s, (void *)p, (size_t)len);
-		s += len;
-		n -= len;
 	}
-	*s = 0;
-	FUNLOCKFILE(fp);
+//	//FLOCKFILE(fp);
+//	s = buf;
+//	n--;			/* leave space for NUL */
+//	while (n != 0) {
+//		/*
+//		 * If the buffer is empty, refill it.
+//		 */
+//		if ((len = fp->_r) <= 0) {
+//			if (__srefill(fp)) {
+//				/* EOF/error: stop with partial or no line */
+//				if (s == buf) {
+//					//FUNLOCKFILE(fp);
+//					return (NULL);
+//				}
+//				break;
+//			}
+//			len = fp->_r;
+//		}
+//		p = fp->_p;
+//
+//		/*
+//		 * Scan through at most n bytes of the current buffer,
+//		 * looking for '\n'.  If found, copy up to and including
+//		 * newline, and stop.  Otherwise, copy entire chunk
+//		 * and loop.
+//		 */
+//		if (len > n)
+//			len = n;
+//		t = memchr((void *)p, '\n', (size_t)len);
+//		if (t != NULL) {
+//			len = ++t - p;
+//			fp->_r -= len;
+//			fp->_p = t;
+//			(void)memcpy((void *)s, (void *)p, (size_t)len);
+//			s[len] = 0;
+//			//FUNLOCKFILE(fp)
+//			return (buf);
+//		}
+//		fp->_r -= len;
+//		fp->_p += len;
+//		(void)memcpy((void *)s, (void *)p, (size_t)len);
+//		s += len;
+//		n -= len;
+//	}
+//	*s = 0;
+//	//FUNLOCKFILE(fp);
 	return (buf);
 }

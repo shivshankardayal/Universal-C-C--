@@ -1,8 +1,6 @@
-/*	$NetBSD: strtol.c,v 1.13 1998/11/15 17:13:52 christos Exp $	*/
-
 /*-
- * Copyright (c) 1990, 1993
- *	The Regents of the University of California.  All rights reserved.
+ * Copyright (c) 1990 The Regents of the University of California.
+ * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -33,20 +31,29 @@
  * SUCH DAMAGE.
  */
 
-#include <sys/cdefs.h>
-#if defined(LIBC_SCCS) && !defined(lint)
-#if 0
-static char sccsid[] = "@(#)strtol.c	8.1 (Berkeley) 6/4/93";
-#else
-__RCSID("$NetBSD: strtol.c,v 1.13 1998/11/15 17:13:52 christos Exp $");
-#endif
-#endif /* LIBC_SCCS and not lint */
-
+#include <limits.h>
 #include <ctype.h>
 #include <errno.h>
-#include <limits.h>
+#if 0
 #include <stdlib.h>
+#endif
+#include "ansidecl.h"
 
+/* FIXME: It'd be nice to configure around these, but the include files are too
+   painful.  These macros should at least be more portable than hardwired hex
+   constants. */
+
+#ifndef ULONG_MAX
+#define	ULONG_MAX	((unsigned long)(~0L))		/* 0xFFFFFFFF */
+#endif
+
+#ifndef LONG_MAX
+#define	LONG_MAX	((long)(ULONG_MAX >> 1))	/* 0x7FFFFFFF */
+#endif
+
+#ifndef LONG_MIN
+#define	LONG_MIN	((long)(~LONG_MAX))		/* 0x80000000 */
+#endif
 
 /*
  * Convert a string to a long integer.
@@ -56,32 +63,29 @@ __RCSID("$NetBSD: strtol.c,v 1.13 1998/11/15 17:13:52 christos Exp $");
  */
 long
 strtol(nptr, endptr, base)
-	const char *nptr;
+	CONST char *nptr;
 	char **endptr;
-	int base;
+	register int base;
 {
-	const char *s;
-	long acc, cutoff;
-	int c;
-	int neg, any, cutlim;
+	register CONST char *s = nptr;
+	register unsigned long acc;
+	register int c;
+	register unsigned long cutoff;
+	register int neg = 0, any, cutlim;
 
 	/*
 	 * Skip white space and pick up leading +/- sign if any.
 	 * If base is 0, allow 0x for hex and 0 for octal, else
 	 * assume decimal; if base is already 16, allow 0x.
 	 */
-	s = nptr;
 	do {
-		c = (unsigned char) *s++;
+		c = *s++;
 	} while (isspace(c));
 	if (c == '-') {
 		neg = 1;
 		c = *s++;
-	} else {
-		neg = 0;
-		if (c == '+')
-			c = *s++;
-	}
+	} else if (c == '+')
+		c = *s++;
 	if ((base == 0 || base == 16) &&
 	    c == '0' && (*s == 'x' || *s == 'X')) {
 		c = s[1];
@@ -108,17 +112,10 @@ strtol(nptr, endptr, base)
 	 * Set any if any `digits' consumed; make it negative to indicate
 	 * overflow.
 	 */
-	cutoff = neg ? LONG_MIN : LONG_MAX;
-	cutlim = (int)(cutoff % base);
-	cutoff /= base;
-	if (neg) {
-		if (cutlim > 0) {
-			cutlim -= base;
-			cutoff += 1;
-		}
-		cutlim = -cutlim;
-	}
-	for (acc = 0, any = 0;; c = (unsigned char) *s++) {
+	cutoff = neg ? -(unsigned long)LONG_MIN : LONG_MAX;
+	cutlim = cutoff % (unsigned long)base;
+	cutoff /= (unsigned long)base;
+	for (acc = 0, any = 0;; c = *s++) {
 		if (isdigit(c))
 			c -= '0';
 		else if (isalpha(c))
@@ -127,32 +124,20 @@ strtol(nptr, endptr, base)
 			break;
 		if (c >= base)
 			break;
-		if (any < 0)
-			continue;
-		if (neg) {
-			if (acc < cutoff || (acc == cutoff && c > cutlim)) {
-				any = -1;
-				acc = LONG_MIN;
-				errno = ERANGE;
-			} else {
-				any = 1;
-				acc *= base;
-				acc -= c;
-			}
-		} else {
-			if (acc > cutoff || (acc == cutoff && c > cutlim)) {
-				any = -1;
-				acc = LONG_MAX;
-				errno = ERANGE;
-			} else {
-				any = 1;
-				acc *= base;
-				acc += c;
-			}
+		if (any < 0 || acc > cutoff || acc == cutoff && c > cutlim)
+			any = -1;
+		else {
+			any = 1;
+			acc *= base;
+			acc += c;
 		}
 	}
+	if (any < 0) {
+		acc = neg ? LONG_MIN : LONG_MAX;
+		errno = ERANGE;
+	} else if (neg)
+		acc = -acc;
 	if (endptr != 0)
-		/* LINTED interface specification */
-		*endptr = (char *)(any ? s - 1 : nptr);
+		*endptr = (char *) (any ? s - 1 : nptr);
 	return (acc);
 }

@@ -58,16 +58,23 @@ void
 perror(s)
 	const char *s;
 {
-	const char *separator;
+	char *separator;
 	char buf[NL_TEXTMAX];
 
 	if (s == NULL)
 		s = "";
 	if (*s == '\0')
-		separator = "";
+	{
+		separator = (char*)malloc(sizeof(char));
+		strcpy(separator,"");
+	}
 	else
-		separator = ": ";
+	{
+		separator = (char*)malloc(sizeof(char)*3);
+		strcpy(separator,": ");
+	}
 
 	(void)fprintf(stderr, "%s%s%s\n", s, separator,
 	    __strerror(errno, buf, sizeof(buf)));
 }
+

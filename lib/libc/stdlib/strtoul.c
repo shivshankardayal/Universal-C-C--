@@ -1,8 +1,6 @@
-/*	$NetBSD: strtoul.c,v 1.13 1998/11/15 17:13:52 christos Exp $	*/
-
 /*
- * Copyright (c) 1990, 1993
- *	The Regents of the University of California.  All rights reserved.
+ * Copyright (c) 1990 Regents of the University of California.
+ * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -33,19 +31,17 @@
  * SUCH DAMAGE.
  */
 
-#include <sys/cdefs.h>
-#if defined(LIBC_SCCS) && !defined(lint)
-#if 0
-static char sccsid[] = "@(#)strtoul.c	8.1 (Berkeley) 6/4/93";
-#else
-__RCSID("$NetBSD: strtoul.c,v 1.13 1998/11/15 17:13:52 christos Exp $");
-#endif
-#endif /* LIBC_SCCS and not lint */
-
+#include <limits.h>
 #include <ctype.h>
 #include <errno.h>
-#include <limits.h>
+#if 0
 #include <stdlib.h>
+#endif
+#include "ansidecl.h"
+
+#ifndef ULONG_MAX
+#define	ULONG_MAX	((unsigned long)(~0L))		/* 0xFFFFFFFF */
+#endif
 
 /*
  * Convert a string to an unsigned long integer.
@@ -55,30 +51,27 @@ __RCSID("$NetBSD: strtoul.c,v 1.13 1998/11/15 17:13:52 christos Exp $");
  */
 unsigned long
 strtoul(nptr, endptr, base)
-	const char *nptr;
+	CONST char *nptr;
 	char **endptr;
-	int base;
+	register int base;
 {
-	const char *s;
-	unsigned long acc, cutoff;
-	int c;
-	int neg, any, cutlim;
+	register CONST char *s = nptr;
+	register unsigned long acc;
+	register int c;
+	register unsigned long cutoff;
+	register int neg = 0, any, cutlim;
 
 	/*
 	 * See strtol for comments as to the logic used.
 	 */
-	s = nptr;
 	do {
-		c = (unsigned char) *s++;
+		c = *s++;
 	} while (isspace(c));
 	if (c == '-') {
 		neg = 1;
 		c = *s++;
-	} else {
-		neg = 0;
-		if (c == '+')
-			c = *s++;
-	}
+	} else if (c == '+')
+		c = *s++;
 	if ((base == 0 || base == 16) &&
 	    c == '0' && (*s == 'x' || *s == 'X')) {
 		c = s[1];
@@ -87,10 +80,9 @@ strtoul(nptr, endptr, base)
 	}
 	if (base == 0)
 		base = c == '0' ? 8 : 10;
-
-	cutoff = ULONG_MAX / (unsigned long)base;
-	cutlim = (int)(ULONG_MAX % (unsigned long)base);
-	for (acc = 0, any = 0;; c = (unsigned char) *s++) {
+	cutoff = (unsigned long)ULONG_MAX / (unsigned long)base;
+	cutlim = (unsigned long)ULONG_MAX % (unsigned long)base;
+	for (acc = 0, any = 0;; c = *s++) {
 		if (isdigit(c))
 			c -= '0';
 		else if (isalpha(c))
@@ -99,22 +91,20 @@ strtoul(nptr, endptr, base)
 			break;
 		if (c >= base)
 			break;
-		if (any < 0)
-			continue;
-		if (acc > cutoff || (acc == cutoff && c > cutlim)) {
+		if (any < 0 || acc > cutoff || acc == cutoff && c > cutlim)
 			any = -1;
-			acc = ULONG_MAX;
-			errno = ERANGE;
-		} else {
+		else {
 			any = 1;
-			acc *= (unsigned long)base;
+			acc *= base;
 			acc += c;
 		}
 	}
-	if (neg && any > 0)
+	if (any < 0) {
+		acc = ULONG_MAX;
+		errno = ERANGE;
+	} else if (neg)
 		acc = -acc;
 	if (endptr != 0)
-		/* LINTED interface specification */
-		*endptr = (char *)(any ? s - 1 : nptr);
+		*endptr = (char *) (any ? s - 1 : nptr);
 	return (acc);
 }
