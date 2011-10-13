@@ -600,16 +600,17 @@ void eh_frame_convert_frag PARAMS ((fragS *));
 #include "expr.h"		/* Before targ-*.h */
 
 /* this one starts the chain of target dependant headers */
-#include "targ-env.h"
-
+#include "obj-format.h"
 #include "struc-symbol.h"
 #include "write.h"
+#include "targ-env.h"
+#include "tc.h"
+
 #include "frags.h"
 #include "hash.h"
 #include "read.h"
 #include "symbols.h"
 
-#include "tc.h"
 #include "obj.h"
 
 #ifdef USE_EMULATIONS

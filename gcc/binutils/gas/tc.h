@@ -20,7 +20,11 @@
 
 /* In theory (mine, at least!) the machine dependent part of the assembler
    should only have to include one file.  This one.  -- JF */
+#ifndef _TC_H
+#define _TC_H
 
+#include "struc-symbol.h"
+#include "write.h"
 extern const pseudo_typeS md_pseudo_table[];
 
 /* JF moved this here from as.h under the theory that nobody except MACHINE.c
@@ -108,5 +112,5 @@ valueT md_section_align PARAMS ((segT seg, valueT size));
 #ifndef md_undefined_symbol
 symbolS *md_undefined_symbol PARAMS ((char *name));
 #endif
-
+#endif
 /* end of tc.h */

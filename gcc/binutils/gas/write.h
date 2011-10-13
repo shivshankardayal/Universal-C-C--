@@ -17,6 +17,10 @@
    along with GAS; see the file COPYING.  If not, write to the Free
    Software Foundation, 59 Temple Place - Suite 330, Boston, MA
    02111-1307, USA.  */
+#ifndef _write_h
+#define _write_h
+
+#include "struc-symbol.h"
 
 #ifndef TC_I960
 #ifdef hpux
@@ -193,3 +197,4 @@ extern fixS *fix_new_exp
 extern void write_print_statistics PARAMS ((FILE *));
 
 /* end of write.h */
+#endif

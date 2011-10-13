@@ -27,7 +27,7 @@
 #endif
 
 /* our version of an nlist node */
-struct symbol
+typedef struct symbol
 {
 #ifndef BFD_ASSEMBLER
   /* The (4-origin) position of sy_name in the symbol table of the object
@@ -94,9 +94,9 @@ struct symbol
 #ifdef TARGET_SYMBOL_FIELDS
   TARGET_SYMBOL_FIELDS
 #endif
-};
+}symbolS;
 
-typedef struct symbol symbolS;
+//typedef struct symbol symbolS;
 
 #ifndef WORKING_DOT_WORD
 struct broken_word

@@ -384,8 +384,9 @@ static tree current_static_block = NULL_TREE;
                         type_declarations interface_body
 			interface_member_declaration constant_declaration
 			interface_member_declarations interface_type
-			abstract_method_declaration interface_type_list
-%type	 <node>		class_body_declaration class_member_declaration
+			//abstract_method_declaration interface_type_list
+			abstract_method_declaration
+%type	 <node>		class_body_declaration //class_member_declaration
 			static_initializer constructor_declaration block
 %type	 <node>		class_body_declarations constructor_header
 %type    <node>		class_or_interface_type class_type class_type_list
@@ -413,7 +414,8 @@ static tree current_static_block = NULL_TREE;
 			post_increment_expression post_decrement_expression
 			unary_expression_not_plus_minus unary_expression
 			pre_increment_expression pre_decrement_expression
-			unary_expression_not_plus_minus cast_expression
+			//unary_expression_not_plus_minus cast_expression
+                        cast_expression
 			multiplicative_expression additive_expression
 			shift_expression relational_expression 
 			equality_expression and_expression 
@@ -10165,6 +10167,7 @@ resolve_type_during_patch (type)
 /* 5.5 Casting Conversion. error_mark_node is returned if an error is
    found. Otherwise NODE or something meant to replace it is returned.  */
 
+static tree convert_narrow ();
 static tree
 patch_cast (node, wfl_operator)
      tree node;
@@ -10182,7 +10185,6 @@ patch_cast (node, wfl_operator)
   /* Check on cast that are proven correct at compile time */
   if (JNUMERIC_TYPE_P (cast_type) && JNUMERIC_TYPE_P (op_type))
     {
-      static tree convert_narrow ();
       /* Same type */
       if (cast_type == op_type)
 	return node;

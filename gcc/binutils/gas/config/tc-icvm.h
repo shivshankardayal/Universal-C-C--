@@ -18,7 +18,11 @@
    along with GAS; see the file COPYING.  If not, write to the Free
    Software Foundation, 59 Temple Place - Suite 330, Boston, MA
    02111-1307, USA.  */
-
+#ifndef _tcicvm_h
+#define _tcicvm_h
+#include "struc-symbol.h"
+#include "write.h"
+#include "tc.h"
 #define TC_ICVM 1
 
 #define ICVM_ENABLE_DUAL_ENDIAN 1	/* to enable dual endian writes */
@@ -178,6 +182,6 @@ extern struct relax_type md_relax_table[];
   }
 
 /* end of tc-icvm.h */
-
+#endif
 
 
