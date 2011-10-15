@@ -61,29 +61,40 @@ fgets(buf, n, fp)
 	int n;
 	FILE *fp;
 {
-	int len;
+	//int len;
 	char *s;
 	char c;
-	unsigned char *p, *t;
+	long long i=0;
+	//unsigned char *p, *t;
 	//TODO:Thread protection
 	if (n <= 0)		/* sanity check */
 		return (NULL);
 	else
 	{
-		while(n!=0)
+		while(n!=1)
 		{
 			c=fgetc(fp);
 			if(c==EOF)
-				buf='\0';
+			{
+				*buf='\0';
+				break;	
+			}
 			else if(c=='\n')
-				buf='\0';
+			{
+				*buf='\0';
+				break;
+			}
 			else
 			{
 				*buf=c;
 				buf++;
+				n--;
+				i++;
 			}
 		}
 	}
+	*buf='\0';
+	buf=buf-i;
 //	//FLOCKFILE(fp);
 //	s = buf;
 //	n--;			/* leave space for NUL */
