@@ -7,3 +7,5 @@ See BUILDDEVSYS.txt in gcc for instructions on how to compile GCC and libraries.
 
 The demos in xdemo and gldemo can be built by just typing 'make', once
 the vm and gcc/libraries have been built and installed.
+
+I have lost interest in this project and work has been abandoned.
